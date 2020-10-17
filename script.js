@@ -43,17 +43,26 @@ var mediaItems = [];
 var mediaCounter = 0;
 
 var reviews = [];
-var reviewCounter = 0;
+var ratings = [];
 
 //Brian's Functions
 $(".journal_btn").click(function(){
 
   //Grabs the value of the search box
   mediaCounter++;  
-  var mediaItem = $(this).prev().val();
+  //var mediaItem = $(this).prev().val();
+  var mediaItem = $("#item-input").val();
   mediaItems.push(mediaItem);
+  var review = $("#review-area").val();
+  reviews.push(review);
+  var rating = $('input[name=stars]:checked').val();
+  ratings.push(rating)
   localStorage.setItem(`media-item${mediaCounter}` , mediaItem);
+  localStorage.setItem(`review${mediaCounter}` , review)
+  localStorage.setItem(`rating${mediaCounter}` , rating)
   console.log(mediaItems);
+  console.log(reviews);
+  console.log(ratings);
   appendJournal();
   })
 
@@ -61,8 +70,8 @@ $(".journal_btn").click(function(){
     $("#journal").html("");
     for (var i = 0; i < mediaItems.length; i++) {
       let journalDiv = $("<div>");
-      journalDiv.text(mediaItems[i]);
-      $("#journal").append(journalDiv);
+      journalDiv.html(`<strong>${mediaItems[i]}</strong>: <em>${reviews[i]}</em><br>${ratings[i]} Stars<hr>`);
+      $("#journal").prepend(journalDiv);
       }
   }
 

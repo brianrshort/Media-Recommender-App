@@ -7,11 +7,10 @@
     
         <!-- Temporary Bootstrap -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+        
 
         <link rel="stylesheet" type="text/css" href="style.css"/>
-
+        
         <title>Quarantine Media Recommender</title>
 
         <!-- Temporary style -->
@@ -52,6 +51,7 @@
         
         <!--JQuery link-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <!-- Body -->
@@ -81,9 +81,27 @@
         </div>
         <div class="container m-3 p-5 red">
             <div class="row">
-                <div class="col-5 m-3 p-5 orange">
-                    <input type="text" id="review-input" placeholder="Mad Max Fury Road">
-                    <button type="button" class="journal_btn btn btn-secondary btn-sm">submit</button>
+                <div class="col-6 m-3 p-5 orange">
+                    <label for="item-input">Movie, Band, Book</label>
+                    <input type="text" id="item-input" placeholder="Mad Max Fury Road">
+                    <br>
+                    <label for="review-area">Review</label>
+                    <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!"></textarea>
+                    <br>
+                    <!--Add your first radio button below-->
+                    <input id="oneStar" type="radio" name="stars" value="1">
+                    <label for="oneStar">1 Star</label>
+                        <!--Add your second radio button below-->
+                    <input id="twoStar" type="radio" name="stars" value="2">
+                    <label for="twoStar">2 Star</label>
+                    <input id="threeStar" type="radio" name="stars" value="3">
+                    <label for="threeStar">3 Star</label>
+                    <input id="fourStar" type="radio" name="stars" value="4">
+                    <label for="fourStar">4 Star</label>
+                    <input id="fiveStar" type="radio" name="stars" value="5">
+                    <label for="fiveStar">5 Star</label>
+                    <br>
+                    <button type="button" class="journal_btn btn btn-secondary btn-sm mt-3">submit</button>
                     <br>
                 </div>
                 <div class="col-5 m-3 p-5 orange">
