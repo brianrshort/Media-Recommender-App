@@ -1,68 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
-    <style>
-        .container {
-            background-color: blue;
-        }
-        .red {
-            background-color: red;
-        }
-        .orange {
-            background-color: orange;
-        }
-        .purple {
-            background-color: purple;
-        }
-        .gray {
-            background-color: gray;
-        }
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!-- Temporary Bootstrap -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" href="style.css"/>
 
+        <title>Quarantine Media Recommender</title>
 
+        <!-- Temporary style -->
+        <style>
+            .container {
+                background-color: blue;
+            }
+            .red {
+                background-color: red;
+            }
+            .orange {
+                background-color: orange;
+            }
+            .purple {
+                background-color: purple;
+            }
+            .gray {
+                background-color: gray;
+            }    
+        </style>
+    </head>
 
-    </style>
-</head>
-<body class="gray">
-    <div class="container m-3 p-5">
-        <div class="row">
-            <div class="col-3 red m-1 p-5">
-                Suggestions
-            </div>
-            <div class="col-8">
-                <div class="row">
-                    <div class="col-5 orange m-1 p-5">
-                        Input
-                    </div>
-                    <div class="col-5 purple m-1 p-5">
-                        Timelog
-                    </div>
+    <!-- Body -->
+    <body class="gray">
+        <div class="container m-3 p-5">
+            <div class="row">
+                <div class="col-3 red m-1 p-5">
+                    Suggestions
                 </div>
-
-                <div class="row">
-                    <div class="col-12  m-1 p-5 gray">
-                        Search Results
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-5 orange m-1 p-5">
+                            Input
+                        </div>
+                        <div class="col-5 purple m-1 p-5">
+                            Timelog
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-12  m-1 p-5 gray">
+                            Search Results
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container m-3 p-5 red">
-        <div class="row">
-            <div class="col-5 m-3 p-5 orange">
-                Enter new review/rating
-            </div>
-            <div class="col-5 m-3 p-5 orange">
-                Review/rating history
+        <div class="container m-3 p-5 red">
+            <div class="row">
+                <div class="col-5 m-3 p-5 orange">
+                    Enter new review/rating
+                </div>
+                <div class="col-5 m-3 p-5 orange">
+                    Review/rating history
+                </div>
             </div>
         </div>
-    </div>
 
 
+        <!-- Javascript -->
+        <script src="script.js"></script>
 
-</body>
+    </body>
+
 </html>
