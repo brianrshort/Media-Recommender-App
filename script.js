@@ -33,3 +33,13 @@ $.ajax({
   console.log(response);
 });
 
+
+
+var hoaxyURL = "https://rapidapi.p.rapidapi.com/articles?query=boats&sort_by=relevant&use_lucene_syntax=true";
+
+$.ajax({
+  url: hoaxyURL,
+  method: "GET"
+}).then(function(response) {
+  console.log(response);
+});
