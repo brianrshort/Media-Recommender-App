@@ -70,7 +70,7 @@ $(".journal_btn").click(function(){
     $("#journal").html("");
     for (var i = 0; i < mediaItems.length; i++) {
       let journalDiv = $("<div>");
-      journalDiv.html(`<strong>${mediaItems[i]}</strong>: <em>${reviews[i]}</em><br>${ratings[i]} Stars<hr>`);
+      journalDiv.html(`<strong>${mediaItems[i]}</strong>: <em>${reviews[i]}</em><br>${ratings[i]} <i class="fas fa-star"></i><hr>`);
       $("#journal").prepend(journalDiv);
       }
   }
