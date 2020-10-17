@@ -1,4 +1,6 @@
-// Global API Variables
+$( document ).ready(function() {
+  
+  // Global API Variables
 var searchTerm = "boats";
 var resultQuantity = 3;
 
@@ -33,3 +35,49 @@ $.ajax({
   console.log(response);
 });
 
+
+
+
+
+var mediaItems = [];
+var mediaCounter = 0;
+
+var reviews = [];
+var reviewCounter = 0;
+
+//Brian's Functions
+$(".journal_btn").click(function(){
+
+  //Grabs the value of the search box
+  mediaCounter++;  
+  var mediaItem = $(this).prev().val();
+  mediaItems.push(mediaItem);
+  localStorage.setItem(`media-item${mediaCounter}` , mediaItem);
+  console.log(mediaItems);
+  appendJournal();
+  })
+
+  function appendJournal() {
+    $("#journal").html("");
+    for (var i = 0; i < mediaItems.length; i++) {
+      let journalDiv = $("<div>");
+      journalDiv.text(mediaItems[i]);
+      $("#journal").append(journalDiv);
+      }
+  }
+
+})
+
+/*        if (query_count < 10) {
+            query_count++;
+            let queryBreak = $("<hr>");
+            let queryEl = $("<div>");
+            queryEl.text(query_param);
+            queryEl.attr("data-name" , query_param);
+            $(".search-box").append(queryBreak , queryEl);
+            queryEl.on("click" , function() {
+                var searchCity = $(this).attr("data-name");
+                    $("#city").html(searchCity);
+                    getCoordinates(searchCity);
+                })
+            }*/

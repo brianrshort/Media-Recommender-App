@@ -7,6 +7,8 @@
     
         <!-- Temporary Bootstrap -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
 
         <link rel="stylesheet" type="text/css" href="style.css"/>
 
@@ -28,7 +30,24 @@
             }
             .gray {
                 background-color: gray;
-            }    
+            }   
+
+
+            /*MSU Brand Colors
+            https://brand.msu.edu/design-visual/
+            Light green #0DB14B
+            Gray #97A2A2
+            Orange #F08521
+            Light blue #008183
+            Lighter blue #909ab7
+            Gray-purple #535054
+            Yellow #D1DE3F
+            Pink #E8D9B5
+            Pastel orange #C89A58
+            Pea green #94AE4A
+            Purple #6E005F
+            Another orange #CB5A28*/
+
         </style>
         
         <!--JQuery link-->
@@ -63,10 +82,15 @@
         <div class="container m-3 p-5 red">
             <div class="row">
                 <div class="col-5 m-3 p-5 orange">
-                    Enter new review/rating
+                    <input type="text" id="review-input" placeholder="Mad Max Fury Road">
+                    <button type="button" class="journal_btn btn btn-secondary btn-sm">submit</button>
+                    <br>
                 </div>
                 <div class="col-5 m-3 p-5 orange">
                     Review/rating history
+                    <div id="journal">
+
+                    </div>
                 </div>
             </div>
         </div>
