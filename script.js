@@ -37,42 +37,71 @@ $.ajax({
 
 
 
-
+if (!localStorage.getItem("counter")) {
+  var counter = 0;
+} else {
+  var counter = parseInt(localStorage.getItem("counter"));
+  for (var j = counter - 1; j >= 0; j--) {
+      var newCounter = j;
+      let startupDiv = $("<div>");
+      /*var gotItem = JSON.stringify(localStorage.getItem(`media-item${newCounter}`));
+      var gotReview = JSON.stringify(localStorage.getItem(`review${newCounter}`));
+      var gotRating = JSON.stringify(localStorage.getItem(`rating${newCounter}`));
+      startupDiv.html(`<strong>${gotItem}</strong>: <em>${gotReview}</em><br> ${gotRating} <i class="far fa-star"></i><hr>`);
+      $("#journal").prepend(startupDiv);*/
+  }
+}
+//console.log(counter);
 
 var mediaItems = [];
-var mediaCounter = 0;
-
 var reviews = [];
 var ratings = [];
+var entries = [];
 
 //Brian's Functions
 $(".journal_btn").click(function(){
-
-  //Grabs the value of the search box
-  mediaCounter++;  
-  //var mediaItem = $(this).prev().val();
+  counter++;  
   var mediaItem = $("#item-input").val();
-  mediaItems.push(mediaItem);
   var review = $("#review-area").val();
-  reviews.push(review);
   var rating = $('input[name=stars]:checked').val();
-  ratings.push(rating)
-  localStorage.setItem(`media-item${mediaCounter}` , mediaItem);
-  localStorage.setItem(`review${mediaCounter}` , review)
-  localStorage.setItem(`rating${mediaCounter}` , rating)
-  console.log(mediaItems);
-  console.log(reviews);
-  console.log(ratings);
+  const entry = {
+    counter: counter,
+    item: mediaItem,
+    review: review,
+    rating: rating
+  }
+  entries.push(entry);
+  //console.log(entry);
+  //console.log(entries);
+  localStorage.setItem("entries" , JSON.stringify(entries));
+  /*localStorage.setItem(`media-item${counter}` , mediaItem);
+  localStorage.setItem(`review${counter}` , review)
+  localStorage.setItem(`rating${counter}` , rating)*/
   appendJournal();
   })
 
   function appendJournal() {
-    $("#journal").html("");
+    var entryArray = JSON.parse(localStorage.getItem("entries"));
+    console.log(entryArray)
+    for (var i = entryArray.length - 1; i >= 0; i--) {
+      let startupDiv = $("<div>");
+      startupDiv.html(`<strong>${entryArray[i].item}</strong>: <em>${entryArray[i].review}</em><br>
+        ${entryArray[i].rating} <i class="far fa-star"></i><hr>`);
+        $("#journal").append(startupDiv);
+      }
+      
+      /*var newItem = JSON.stringify(localStorage.getItem(`media-item${newIndex}`));
+      var newReview = JSON.stringify(localStorage.getItem(`review${newIndex}`));
+      var newRating = JSON.stringify(localStorage.getItem(`rating${newIndex}`));
+      startupDiv.html(`<strong>${newItem}</strong>: <em>${newReview}</em><br> ${newRating} <i class="far fa-star"></i><hr>`);*/
+     
+    
+    /*$("#journal").html("");
     for (var i = 0; i < mediaItems.length; i++) {
       let journalDiv = $("<div>");
-      journalDiv.html(`<strong>${mediaItems[i]}</strong>: <em>${reviews[i]}</em><br>${ratings[i]} <i class="fas fa-star"></i><hr>`);
+      journalDiv.html(`<strong>${mediaItems[i]}</strong>: <em>${reviews[i]}</em><br>${ratings[i]} <i class="far fa-star"></i><hr>`);
       $("#journal").prepend(journalDiv);
-      }
+      }*/
   }
 
 })
