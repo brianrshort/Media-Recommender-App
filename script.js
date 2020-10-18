@@ -38,7 +38,6 @@ $.ajax({
 
 //Brian's Functions
 
-
 var entries;
 
 if (!localStorage.getItem("entries")) {
@@ -46,7 +45,6 @@ if (!localStorage.getItem("entries")) {
   entries = [];
 } else {
   entries = JSON.parse(localStorage.getItem("entries"));
-  console.log(entries);
   for (var j = entries.length - 1; j > -1; j--) {
       let startupDiv = $("<div>");
       startupDiv.html(`<strong>${entries[j].item}</strong>: <em>${entries[j].review}</em><br>
@@ -54,20 +52,20 @@ if (!localStorage.getItem("entries")) {
       $("#journal").append(startupDiv);
   }
 }
-//console.log(counter);
 
 $(".journal_btn").click(function(event){
   event.preventDefault();
   var mediaItem = $("#item-input").val();
   var review = $("#review-area").val();
+  var type = $("#media-type").val();
   var rating = $('input[name=stars]:checked').val();
   entry = {
     item: mediaItem,
     review: review,
+    type: type,
     rating: rating
   }
   entries.push(entry);
-  console.log(entries);
   localStorage.setItem("entries" , JSON.stringify(entries));
   appendJournal();
   })
@@ -75,19 +73,22 @@ $(".journal_btn").click(function(event){
   function appendJournal() {
     $("#journal").html("");
     entries = JSON.parse(localStorage.getItem("entries"));
-    console.log(entries)
     for (var i = entries.length - 1; i >= 0; i--) {
       let appendDiv = $("<div>");
-      appendDiv.html(`<strong>${entries[i].item}</strong>: <em>${entries[i].review}</em><br>
+      appendDiv.html(`<strong>${entries[i].item}</strong> (${entries[i].type}): <em>${entries[i].review}</em><br>
         ${entries[i].rating} <i class="far fa-star"></i><hr>`);
         $("#journal").append(appendDiv);
-      }
-  }
+    }
+   }
 
+   
   $("#clear-click").on("click" , function() {
     entries = [];
     localStorage.setItem("entries" , JSON.stringify(entries));
     $("#journal").html("");
+    $(".summaryDiv").html("");
   })
+
+  
 
 })
