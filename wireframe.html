@@ -83,11 +83,12 @@
         <div class="container m-3 p-5 red">
             <div class="row">
                 <div class="col-6 m-3 p-5 orange">
-                    <label for="item-input">Movie, Band, Book</label>
-                    <input type="text" id="item-input" placeholder="Mad Max Fury Road">
+                    <form>
+                    <label for="item-input">Title</label>
+                    <input type="text" id="item-input" placeholder="Mad Max Fury Road" required />
                     <br>
                     <label for="media-type">Media Type</label>
-                    <input list="types" id="media-type" name="media-type" placeholder="Film"> 
+                    <input list="types" id="media-type" name="media-type" placeholder="Film" required /> 
                     <datalist id="types">
                         <option value="Novel" />
                         <option value="Album" />
@@ -102,7 +103,7 @@
                     </datalist>
                     <br>
                     <label for="review-area">Review</label>
-                    <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!"></textarea>
+                    <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!" minlength="30" required /></textarea>
                     <br>
                     <input id="oneStar" type="radio" name="stars" value="1">
                     <label for="oneStar"><i class="fas fa-star"></i></label>
@@ -115,9 +116,9 @@
                     <input id="fiveStar" type="radio" name="stars" value="5">
                     <label for="fiveStar"><i class="fas fa-star"></i></label>
                     <br>
-                    <button type="button" class="journal_btn btn btn-secondary btn-sm mt-3">submit</button>
-                    <br>
-                    <div class="summaryDiv mt-3"></div>
+                    <input type="submit" id="submission" value="Submit" />
+                    <!--<button type="submit" class="journal_btn btn btn-secondary btn-sm mt-3">submit</button>-->
+                </form>
                 </div>
                 <div class="col-5 m-3 p-5 orange">
                     Review/rating history 

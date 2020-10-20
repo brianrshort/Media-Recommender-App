@@ -46,19 +46,28 @@ if (!localStorage.getItem("entries")) {
 } else {
   entries = JSON.parse(localStorage.getItem("entries"));
   for (var j = entries.length - 1; j > -1; j--) {
+      let cardEl = $("<div>");
+      cardEl.addClass("card m-3");
       let startupDiv = $("<div>");
-      startupDiv.html(`<strong>${entries[j].item}</strong>: <em>${entries[j].review}</em><br>
-        ${entries[j].rating} <i class="far fa-star"></i><hr>`);
-      $("#journal").append(startupDiv);
+      startupDiv.addClass("card-body");
+      startupDiv.html(`<strong>${entries[j].item}</strong><br><small>${entries[j].type}</small><br><em>${entries[j].review}</em><br>
+      ${entries[j].rating} <i class="far fa-star"></i>`);
+      cardEl.append(startupDiv);
+      $("#journal").append(cardEl);
   }
 }
 
-$(".journal_btn").click(function(event){
+$("#submission").click(function(event){
   event.preventDefault();
-  var mediaItem = $("#item-input").val();
-  var review = $("#review-area").val();
-  var type = $("#media-type").val();
+  var mediaItem = $("#item-input").val().trim();
+  var review = $("#review-area").val().trim();
+  var type = $("#media-type").val().trim();
   var rating = $('input[name=stars]:checked').val();
+  if (mediaItem === "" || review === "" || type === "" || review.length <= 30){
+    $("#item-input").attr("placeholder" , "Your title here");
+    $("#media-type").attr("placeholder" , "Your media type here")
+    $("#review-area").attr("placeholder" , "Write a review");
+  } else {
   entry = {
     item: mediaItem,
     review: review,
@@ -68,27 +77,28 @@ $(".journal_btn").click(function(event){
   entries.push(entry);
   localStorage.setItem("entries" , JSON.stringify(entries));
   appendJournal();
+  }
   })
 
   function appendJournal() {
     $("#journal").html("");
     entries = JSON.parse(localStorage.getItem("entries"));
     for (var i = entries.length - 1; i >= 0; i--) {
+      let cardDiv = $("<div>");
+      cardDiv.addClass("card m-3");
       let appendDiv = $("<div>");
-      appendDiv.html(`<strong>${entries[i].item}</strong> (${entries[i].type}): <em>${entries[i].review}</em><br>
-        ${entries[i].rating} <i class="far fa-star"></i><hr>`);
-        $("#journal").append(appendDiv);
+      appendDiv.addClass("card-body");
+      appendDiv.html(`<strong>${entries[i].item}</strong><br><small>${entries[i].type}</small><br><em>${entries[i].review}</em><br>
+        ${entries[i].rating} <i class="far fa-star"></i>`);
+      cardDiv.append(appendDiv);
+      $("#journal").append(cardDiv);
     }
    }
 
-   
   $("#clear-click").on("click" , function() {
     entries = [];
     localStorage.setItem("entries" , JSON.stringify(entries));
     $("#journal").html("");
     $(".summaryDiv").html("");
   })
-
-  
-
 })
