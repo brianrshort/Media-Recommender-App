@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html class="no-js" lang="en-US" dir="ltr">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,6 @@
         <!-- Temporary Bootstrap -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
-
-        <link rel="stylesheet" type="text/css" href="style.css"/>
         
         <title>Quarantine Media Recommender</title>
 
@@ -48,38 +47,120 @@
             Another orange #CB5A28*/
 
         </style>
+        <title>Quarantine Media Recommender</title>
+
+        <!-- Foundation Links (compressed css and js) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
         
-        <!--JQuery link-->
+        <!-- CSS Link -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <!-- JQuery Link -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/6b1cbbe265.js" crossorigin="anonymous"></script>
         
     </head>
 
     <!-- Body -->
-    <body class="gray">
-        <div class="container m-3 p-5">
-            <div class="row">
-                <div class="col-3 red m-1 p-5">
-                    Suggestions
+    <body >
+        <!-- Top bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <h1>Quarantine Media Recommender</h1>
+            </div>
+        </div>
+
+        <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <!-- Suggestions -->
+            <div class="large-4 medium-4 small-4 cell">
+                <div class="secondary callout">
+                    <h4>Suggestions</h4>
                 </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-5 orange m-1 p-5">
-                            Input
-                        </div>
-                        <div class="col-5 purple m-1 p-5">
-                            Timelog
-                        </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-12  m-1 p-5 gray">
-                            Search Results
-                        </div>
-                    </div>
+            </div>
+
+            <!-- Search Bar and Button -->
+            <div class="large-4 medium-4 small-4 cell">
+                <div class="warning callout">
+                    <input type="search" placeholder="Search">
+                    <button type="button" class="button warning">Go!</button>
                 </div>
             </div>
         </div>
+        
+            
+            <!-- Timelog -->
+            <div class="large-4 medium-4 small-4 cell">
+                <div class="secondary callout">
+                    <h4>Timelog</h4>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="large-12 cell">
+                <div class="warning callout">
+                    <h4>Search Results:</h4>
+                </div>
+              </div>
+
+        </div>
+
+        <hr>
+
+        <!-- New Review -->
+        <h5>New Review</h5>
+        <form>
+          <div class="grid-x grid-padding-x">
+
+            <!-- Input title for review -->
+            <div class="large-4 medium-4 cell">
+              <label>Title</label>
+              <input id="item-input" type="text" placeholder="Title" required>
+            </div>
+
+            <!-- Input category for review -->
+            <div class="large-4 medium-4 cell">
+              <label>Category</label>
+              <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
+              <input type="radio" name="category" value="movie" id="media-type"><label for="movie">Movie</label>
+              <input type="radio" name="category" value="band" id="media-type"><label for="band">Band</label>
+              <input type="radio" name="category" value="podcast" id="media-type"><label for="podcast">Podcast</label>
+            </div>
+
+            <!-- Select star rating for review -->
+            <div class="large-2 medium-2 cell">
+                <label>Rating</label>
+                <select>
+                    <option>&bigstar; &star; &star; &star; &star;</option>
+                    <option>&bigstar; &bigstar; &star; &star; &star;</option>
+                    <option>&bigstar; &bigstar; &bigstar; &star; &star;</option>
+                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
+                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
+                </select>
+            </div>
+
+            <!-- Submit button for review -->
+            <div class="large-2 medium-2 cell">
+                <a href="#" class="button secondary hollow">Submit Review</a>
+            </div>
+          </div>
+        </form>
+        
+        <hr>
+
+        <!-- Previous Reviews/Ratings Listed -->
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+                <div class="callout">
+                    <h4>Ratings</h4>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
         <div class="container m-3 p-5 red">
             <div class="row">
                 <div class="col-6 m-3 p-5 orange">
@@ -127,13 +208,10 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
-
-
+                </div>
+                </div>
         <!-- Javascript -->
         <script src="script.js"></script>
 
     </body>
-
 </html>
