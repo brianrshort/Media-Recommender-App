@@ -2,24 +2,20 @@ $( document ).ready(function() {
   
 // Sam's Work
 
+// Go button Function
 $('.go-btn').click(function() {
   searchTerm = $('#input-field').val();
-  //console.log(searchTerm);
 
-  // SAM! START HERE WITH IF STATEMENTS FOR CATEGORY SELECTIONS----------------------------------
+  // Search Filter Array
   var checkedBoxes = [
   
   bookCategory = $("input[name=book]:checked").val(),
-  //console.log(bookCategory);
   movieCategory = $("input[name=movie]:checked").val(),
-  //console.log(movieCategory);
   songCategory = $("input[name=song]:checked").val(),
-  //console.log(songCategory);
   ]
-  //console.log(checkedBoxes);
 
+  // See which filters are checked
   for (let i = 0; i < checkedBoxes.length; i++) {
-    //console.log(checkedBoxes[i]);
     if (checkedBoxes[i] == "book") {
       bookSearch();
     } else if (checkedBoxes[i] == "movie") {
@@ -31,22 +27,13 @@ $('.go-btn').click(function() {
 
 })
 
-
-
-
-
-
-
-
 // Global API Variables
 var searchTerm = "boats";
 var resultQuantity = 3;
 
 // MOVIES: OMDB API
 function movieSearch() {
-
 var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
-
 $.ajax({
   url: omdbURL,
   method: "GET"
@@ -57,9 +44,7 @@ $.ajax({
 
 // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
 function bookSearch() {
-
 var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
-
 $.ajax({
   url: olURL,
   method: "GET"
@@ -70,9 +55,7 @@ $.ajax({
 
 // Music
 function songSearch() {
-
 var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ resultQuantity +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
-
 $.ajax({
   url: happiURL,
   method: "GET"
