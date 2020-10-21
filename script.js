@@ -62,8 +62,8 @@ $("#submission").click(function(event){
   var mediaItem = $("#item-input").val().trim();
   var review = $("#review-area").val().trim();
   var type = $("#media-type").val().trim();
-  var rating = $('input[name=stars]:checked').val();
-  if (mediaItem === "" || review === "" || type === "" || review.length <= 30){
+  var rating = $("#stars").val();
+  if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
     $("#item-input").attr("placeholder" , "Your title here");
     $("#media-type").attr("placeholder" , "Your media type here")
     $("#review-area").attr("placeholder" , "Write a review");
@@ -99,6 +99,6 @@ $("#submission").click(function(event){
     entries = [];
     localStorage.setItem("entries" , JSON.stringify(entries));
     $("#journal").html("");
-    $(".summaryDiv").html("");
+    
   })
 })
