@@ -24,12 +24,11 @@ $.ajax({
   console.log(response.docs.slice(0,resultQuantity));
 });
 
-// LIVE MUSIC: Bands In Town API
-// Only getting one result at a time ~ Looking into other API options
-var bitURL = "https://rest.bandsintown.com/artists/" + searchTerm + "?app_id=codingbootcamp";
+// Music
+var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ resultQuantity +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
 
 $.ajax({
-  url: bitURL,
+  url: happiURL,
   method: "GET"
 }).then(function(response) {
   console.log(response);
