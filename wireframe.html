@@ -17,10 +17,12 @@
         
         <!-- JQuery Link -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/6b1cbbe265.js" crossorigin="anonymous"></script>
+        
     </head>
 
     <!-- Body -->
-    <body >
+    <body>
         <!-- Top bar -->
         <div class="top-bar">
             <div class="top-bar-left">
@@ -29,95 +31,101 @@
         </div>
 
         <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-            <!-- Suggestions -->
-            <div class="large-4 medium-4 small-4 cell">
-                <div class="secondary callout">
-                    <h4>Suggestions</h4>
+            <div class="grid-x grid-padding-x">
+                <div class="large-8 medium-8 small-8 cell">
+
+                    <!-- Search Bar and Button -->
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <div class="warning callout">
+                                <input type="search" placeholder="Search">
+                                <button type="button" class="button warning">Go!</button>
+                                <input type="checkbox" name="search" value="book" id="search-type"><label for="book">Book</label>
+                                <input type="checkbox" name="search" value="movie" id="search-type"><label for="movie">Movie</label>
+                                <input type="checkbox" name="search" value="song" id="search-type"><label for="song">Song</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <div class="warning callout">
+                                <h4>Search Results:</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suggestions -->
+                <div class="large-4 medium-4 small-4 cell">
+                    <div class="secondary callout">
+                        <h4>Suggestions:</h4>
+                    </div>
                 </div>
             </div>
 
-            <!-- Search Bar and Button -->
-            <div class="large-4 medium-4 small-4 cell">
-                <div class="warning callout">
-                    <input type="search" placeholder="Search">
-                    <button type="button" class="button warning">Go!</button>
+            <hr>
+
+            <!-- New Review -->
+            <h5>New Review</h5>
+            <form>
+                <div class="callout success">
+                    <div class="grid-x grid-padding-x">
+                        
+                        <!-- Input title for review -->
+                        <div class="large-5 medium-5 cell">
+                            <label>Title</label>
+                            <input id="item-input" type="text" placeholder="Title" required>
+                        </div>
+
+                        <!-- Input category for review -->
+                        <div class="large-4 medium-4 cell">
+                            <label>Category</label>
+                            <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
+                            <input type="radio" name="category" value="movie" id="media-type"><label for="movie">Movie</label>
+                            <input type="radio" name="category" value="song" id="media-type"><label for="song">Song</label>
+                        </div>
+
+                        <!-- Select star rating for review -->
+                        <div class="large-3 medium-3 cell">
+                            <label>Rating</label>
+                            <select name="stars" id="stars">
+                                <option value="1">&bigstar; &star; &star; &star; &star;</option>
+                                <option value="2">&bigstar; &bigstar; &star; &star; &star;</option>
+                                <option value="3">&bigstar; &bigstar; &bigstar; &star; &star;</option>
+                                <option value="4">&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
+                                <option value="5">&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
+                            </select>
+                        </div>
+
+                        <!--Text area for review -->
+                        <div class="large-8 medium-8 small-8 cell">
+                            <label for="review-area">Review</label>
+                            <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!" minlength="30" required></textarea>
+                        </div>
+
+                        <!-- Submit button for review -->
+                        <div class="large-2 medium-2 cell">
+                            <a href="#" class="button success" id="submission">Submit Review</a>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </form>
             
-            <!-- Timelog -->
-            <div class="large-4 medium-4 small-4 cell">
-                <h4>Timelog</h4>
-                <div  id="log" class="secondary callout log">
-                    <input class="input" id = "input" type="text">
-                    <ul id ="log-ul"></ul>
+            <!-- Previous Reviews/Ratings Listed -->
+            <div class="grid-x grid-padding-x">
+                <div class="large-12 cell">
+                    <div class="callout success">
+                        <h4>Ratings:</h4>
+                        <button id="clear-click" class="button secondary hollow">Clear History</button>
+                        <div id="journal"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Search Results -->
-            <div class="large-12 cell">
-                <div class="warning callout">
-                    <h4>Search Results:</h4>
-                </div>
-              </div>
-
         </div>
-
-        <hr>
-
-        <!-- New Review -->
-        <h5>New Review</h5>
-        <form>
-          <div class="grid-x grid-padding-x">
-
-            <!-- Input title for review -->
-            <div class="large-4 medium-4 cell">
-              <label>Title</label>
-              <input type="text" placeholder="Title" required>
-            </div>
-
-            <!-- Input category for review -->
-            <div class="large-4 medium-4 cell">
-              <label>Category</label>
-              <input type="radio" name="category" value="book" id="book"><label for="book">Book</label>
-              <input type="radio" name="category" value="movie" id="movie"><label for="movie">Movie</label>
-              <input type="radio" name="category" value="band" id="band"><label for="band">Band</label>
-              <input type="radio" name="category" value="podcast" id="podcast"><label for="podcast">Podcast</label>
-            </div>
-
-            <!-- Select star rating for review -->
-            <div class="large-2 medium-2 cell">
-                <label>Rating</label>
-                <select>
-                    <option>&bigstar; &star; &star; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &star; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
-                </select>
-            </div>
-
-            <!-- Submit button for review -->
-            <div class="large-2 medium-2 cell">
-                <a href="#" class="button secondary hollow">Submit Review</a>
-            </div>
-          </div>
-        </form>
-        
-        <hr>
-
-        <!-- Previous Reviews/Ratings Listed -->
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <div class="callout">
-                    <h4>Ratings</h4>
-                </div>
-            </div>
-        </div>
-
-        </div>
-
-
 
 
         <!-- Javascript -->
