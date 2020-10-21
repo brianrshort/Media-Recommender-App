@@ -6,47 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-        <!-- Temporary Bootstrap -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
-        
-        <title>Quarantine Media Recommender</title>
-
-        <!-- Temporary style -->
-        <style>
-            .container {
-                background-color: blue;
-            }
-            .red {
-                background-color: red;
-            }
-            .orange {
-                background-color: orange;
-            }
-            .purple {
-                background-color: purple;
-            }
-            .gray {
-                background-color: gray;
-            }   
-
-
-            /*MSU Brand Colors
-            https://brand.msu.edu/design-visual/
-            Light green #0DB14B
-            Gray #97A2A2
-            Orange #F08521
-            Light blue #008183
-            Lighter blue #909ab7
-            Gray-purple #535054
-            Yellow #D1DE3F
-            Pink #E8D9B5
-            Pastel orange #C89A58
-            Pea green #94AE4A
-            Purple #6E005F
-            Another orange #CB5A28*/
-
-        </style>
         <title>Quarantine Media Recommender</title>
 
         <!-- Foundation Links (compressed css and js) -->
@@ -63,7 +22,7 @@
     </head>
 
     <!-- Body -->
-    <body >
+    <body>
         <!-- Top bar -->
         <div class="top-bar">
             <div class="top-bar-left">
@@ -72,146 +31,103 @@
         </div>
 
         <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-            <!-- Suggestions -->
-            <div class="large-4 medium-4 small-4 cell">
-                <div class="secondary callout">
-                    <h4>Suggestions</h4>
+            <div class="grid-x grid-padding-x">
+                <div class="large-8 medium-8 small-8 cell">
+
+                    <!-- Search Bar and Button -->
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <div class="warning callout">
+                                <input type="search" placeholder="Search">
+                                <button type="button" class="button warning">Go!</button>
+                                <input type="checkbox" name="search" value="book" id="search-type"><label for="book">Book</label>
+                                <input type="checkbox" name="search" value="movie" id="search-type"><label for="movie">Movie</label>
+                                <input type="checkbox" name="search" value="song" id="search-type"><label for="song">Song</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-12 medium-12 small-12 cell">
+                            <div class="warning callout">
+                                <h4>Search Results:</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suggestions -->
+                <div class="large-4 medium-4 small-4 cell">
+                    <div class="secondary callout">
+                        <h4>Suggestions:</h4>
+                    </div>
                 </div>
             </div>
 
-            <!-- Search Bar and Button -->
-            <div class="large-4 medium-4 small-4 cell">
-                <div class="warning callout">
-                    <input type="search" placeholder="Search">
-                    <button type="button" class="button warning">Go!</button>
-                </div>
-            </div>
-        </div>
-        
-            
-            <!-- Timelog -->
-            <div class="large-4 medium-4 small-4 cell">
-                <h4>Timelog</h4>
-                <div  id="log" class="secondary callout log">
-                    <input class="input" id = "input" type="text">
-                    <ul id ="log-ul"></ul>
-                </div>
-            </div>
+            <hr>
 
-            <!-- Search Results -->
-            <div class="large-12 cell">
-                <div class="warning callout">
-                    <h4>Search Results:</h4>
-                </div>
-              </div>
+            <!-- New Review -->
+            <h5>New Review</h5>
+            <form>
+                <div class="callout success">
+                    <div class="grid-x grid-padding-x">
+                        
+                        <!-- Input title for review -->
+                        <div class="large-5 medium-5 cell">
+                            <label>Title</label>
+                            <input id="item-input" type="text" placeholder="Title" required>
+                        </div>
 
-        </div>
+                        <!-- Input category for review -->
+                        <div class="large-4 medium-4 cell">
+                            <label>Category</label>
+                            <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
+                            <input type="radio" name="category" value="movie" id="media-type"><label for="movie">Movie</label>
+                            <input type="radio" name="category" value="song" id="media-type"><label for="song">Song</label>
+                        </div>
 
-        <hr>
+                        <!-- Select star rating for review -->
+                        <div class="large-3 medium-3 cell">
+                            <label>Rating</label>
+                            <select name="stars" id="stars">
+                                <option value="1">&bigstar; &star; &star; &star; &star;</option>
+                                <option value="2">&bigstar; &bigstar; &star; &star; &star;</option>
+                                <option value="3">&bigstar; &bigstar; &bigstar; &star; &star;</option>
+                                <option value="4">&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
+                                <option value="5">&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
+                            </select>
+                        </div>
 
-        <!-- New Review -->
-        <h5>New Review</h5>
-        <form>
-          <div class="grid-x grid-padding-x">
+                        <!--Text area for review -->
+                        <div class="large-8 medium-8 small-8 cell">
+                            <label for="review-area">Review</label>
+                            <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!" minlength="30" required></textarea>
+                        </div>
 
-            <!-- Input title for review -->
-            <div class="large-4 medium-4 cell">
-              <label>Title</label>
-              <input id="item-input" type="text" placeholder="Title" required>
-            </div>
-
-            <!-- Input category for review -->
-            <div class="large-4 medium-4 cell">
-              <label>Category</label>
-              <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
-              <input type="radio" name="category" value="movie" id="media-type"><label for="movie">Movie</label>
-              <input type="radio" name="category" value="band" id="media-type"><label for="band">Band</label>
-              <input type="radio" name="category" value="podcast" id="media-type"><label for="podcast">Podcast</label>
-            </div>
-
-            <!-- Select star rating for review -->
-            <div class="large-2 medium-2 cell">
-                <label>Rating</label>
-                <select>
-                    <option>&bigstar; &star; &star; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &star; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &star; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
-                    <option>&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
-                </select>
-            </div>
-
-            <!-- Submit button for review -->
-            <div class="large-2 medium-2 cell">
-                <a href="#" class="button secondary hollow">Submit Review</a>
-            </div>
-          </div>
-        </form>
-        
-        <hr>
-
-        <!-- Previous Reviews/Ratings Listed -->
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <div class="callout">
-                    <h4>Ratings</h4>
-                </div>
-            </div>
-        </div>
-
-        </div>
-
-
-        <div class="container m-3 p-5 red">
-            <div class="row">
-                <div class="col-6 m-3 p-5 orange">
-                    <form>
-                    <label for="item-input">Title</label>
-                    <input type="text" id="item-input" placeholder="Mad Max Fury Road" required />
-                    <br>
-                    <label for="media-type">Media Type</label>
-                    <input list="types" id="media-type" name="media-type" placeholder="Film" required /> 
-                    <datalist id="types">
-                        <option value="Novel" />
-                        <option value="Album" />
-                        <option value="Film" />
-                        <option value="Performance Art" />
-                        <option value="Theatre" />
-                        <option value="Live Reading" />
-                        <option value="Vaudeville and Variety" />
-                        <option value="Friend's Blog" />
-                        <option value="Chumbawumba Tiny Desk Concert" />
-                        <option value="Staring at the Ceiling Wondering When This Will All Be Over" />
-                    </datalist>
-                    <br>
-                    <label for="review-area">Review</label>
-                    <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever made!" minlength="30" required /></textarea>
-                    <br>
-                    <input id="oneStar" type="radio" name="stars" value="1">
-                    <label for="oneStar"><i class="fas fa-star"></i></label>
-                    <input id="twoStar" type="radio" name="stars" value="2">
-                    <label for="twoStar"><i class="fas fa-star"></i></label>
-                    <input id="threeStar" type="radio" name="stars" value="3" checked>
-                    <label for="threeStar"><i class="fas fa-star"></i></label>
-                    <input id="fourStar" type="radio" name="stars" value="4">
-                    <label for="fourStar"><i class="fas fa-star"></i></label>
-                    <input id="fiveStar" type="radio" name="stars" value="5">
-                    <label for="fiveStar"><i class="fas fa-star"></i></label>
-                    <br>
-                    <input type="submit" id="submission" value="Submit" />
-                    <!--<button type="submit" class="journal_btn btn btn-secondary btn-sm mt-3">submit</button>-->
-                </form>
-                </div>
-                <div class="col-5 m-3 p-5 orange">
-                    Review/rating history 
-                    <button id="clear-click">Clear</button>
-                    <div id="journal">
+                        <!-- Submit button for review -->
+                        <div class="large-2 medium-2 cell">
+                            <a href="#" class="button success" id="submission">Submit Review</a>
+                        </div>
 
                     </div>
                 </div>
+            </form>
+            
+            <!-- Previous Reviews/Ratings Listed -->
+            <div class="grid-x grid-padding-x">
+                <div class="large-12 cell">
+                    <div class="callout success">
+                        <h4>Ratings:</h4>
+                        <button id="clear-click" class="button secondary hollow">Clear History</button>
+                        <div id="journal"></div>
+                    </div>
                 </div>
-                </div>
+            </div>
+
+        </div>
+
+
         <!-- Javascript -->
         <script src="script.js"></script>
         <script src="script1.js"></script>
