@@ -5,6 +5,8 @@ var resultQuantity = 3;
 // MOVIES: OMDB API
 var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
 
+// Sam's Work
+
 $.ajax({
   url: omdbURL,
   method: "GET"
