@@ -1,13 +1,51 @@
 $( document ).ready(function() {
   
-  // Global API Variables
+// Sam's Work
+
+$('.go-btn').click(function() {
+  searchTerm = $('#input-field').val();
+  //console.log(searchTerm);
+
+  // SAM! START HERE WITH IF STATEMENTS FOR CATEGORY SELECTIONS----------------------------------
+  var checkedBoxes = [
+  
+  bookCategory = $("input[name=book]:checked").val(),
+  //console.log(bookCategory);
+  movieCategory = $("input[name=movie]:checked").val(),
+  //console.log(movieCategory);
+  songCategory = $("input[name=song]:checked").val(),
+  //console.log(songCategory);
+  ]
+  //console.log(checkedBoxes);
+
+  for (let i = 0; i < checkedBoxes.length; i++) {
+    //console.log(checkedBoxes[i]);
+    if (checkedBoxes[i] == "book") {
+      bookSearch();
+    } else if (checkedBoxes[i] == "movie") {
+      movieSearch();
+    } else if (checkedBoxes[i] == "song") {
+      songSearch();
+    }
+  }
+
+})
+
+
+
+
+
+
+
+
+// Global API Variables
 var searchTerm = "boats";
 var resultQuantity = 3;
 
 // MOVIES: OMDB API
-var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
+function movieSearch() {
 
-// Sam's Work
+var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
 
 $.ajax({
   url: omdbURL,
@@ -15,8 +53,11 @@ $.ajax({
 }).then(function(response) {
   console.log(response.Search.slice(0,resultQuantity));
 });
+}
 
 // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
+function bookSearch() {
+
 var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
 
 $.ajax({
@@ -25,17 +66,20 @@ $.ajax({
 }).then(function(response) {
   console.log(response.docs.slice(0,resultQuantity));
 });
+}
 
 // Music
+function songSearch() {
+
 var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ resultQuantity +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
 
 $.ajax({
   url: happiURL,
   method: "GET"
 }).then(function(response) {
-  console.log(response);
+  console.log(response.result);
 });
-
+}
 
 //Brian's Functions
 

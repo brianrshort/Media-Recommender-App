@@ -83,8 +83,8 @@
             <!-- Search Bar and Button -->
             <div class="large-4 medium-4 small-4 cell">
                 <div class="warning callout">
-                    <input type="search" placeholder="Search">
-                    <button type="button" class="button warning">Go!</button>
+                    <input id="input-field" type="search" placeholder="Search">
+                    <button type="button" class="button warning go-btn">Go!</button>
                 </div>
             </div>
         </div>
@@ -124,10 +124,9 @@
             <!-- Input category for review -->
             <div class="large-4 medium-4 cell">
               <label>Category</label>
-              <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
-              <input type="radio" name="category" value="movie" id="media-type"><label for="movie">Movie</label>
-              <input type="radio" name="category" value="band" id="media-type"><label for="band">Band</label>
-              <input type="radio" name="category" value="podcast" id="media-type"><label for="podcast">Podcast</label>
+              <input type="radio" name="book" value="book" id="book"><label for="book">Book</label>
+              <input type="radio" name="movie" value="movie" id="movie"><label for="movie">Movie</label>
+              <input type="radio" name="song" value="song" id="song"><label for="song">Song</label>
             </div>
 
             <!-- Select star rating for review -->
