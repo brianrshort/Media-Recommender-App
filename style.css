@@ -19,17 +19,20 @@ body {
 
 /* Topbar and Hero */
 .topbar-desktop {
-    height: 80px;
+    height: 100px;
     color: #3fb0ac;
     padding: 0;
-    font-size: larger;
 }
 
 .heart {
     color: #be79df;
 }
 
-h3, .qmr {
+.logoqmr {
+    font-size: 50px;
+}
+
+.logoqmr, .qmr {
     font-family: 'Major Mono Display', monospace;
 }
 
@@ -57,6 +60,7 @@ h4 {
     background-color: #ffe05d;
     color: whitesmoke;
     border: whitesmoke;
+    border-radius: 10px;
     padding: 10px;
 }
 
@@ -71,12 +75,14 @@ h4 {
     float: right;
     padding: 10px;
     margin: 0 auto;
+    border-radius: 10px;
 }
 
 .searchoptions {
     padding-left: 1cm;
 }
 
+/* Search Results Callout */
 #searchresults {
     background-color: rgb(206, 206, 206);
     color: white;
@@ -101,6 +107,11 @@ h4 {
 #stars {
     color: #ffdf4e;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#submission, #clear-click {
+    border-radius: 10px;
+
 }
 
 /* Footer */
