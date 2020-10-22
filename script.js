@@ -1,79 +1,79 @@
-$( document ).ready(function() {
-  
-// Sam's Work
+$(document).ready(function () {
 
-// Go button Function
-$('.go-btn').click(function() {
-  searchTerm = $('#input-field').val();
+  // Sam's Work
 
-  // Search Filter Array
-  var checkedBoxes = [
-  
-  bookCategory = $("input[name=book]:checked").val(),
-  movieCategory = $("input[name=movie]:checked").val(),
-  songCategory = $("input[name=song]:checked").val(),
-  ]
+  // Go button Function
+  $('#searchbtn').click(function () {
+    searchTerm = $('#input-field').val();
 
-  // See which filters are checked
-  for (let i = 0; i < checkedBoxes.length; i++) {
-    if (checkedBoxes[i] == "book") {
-      bookSearch();
-    } else if (checkedBoxes[i] == "movie") {
-      movieSearch();
-    } else if (checkedBoxes[i] == "song") {
-      songSearch();
+    // Search Filter Array
+    var checkedBoxes = [
+
+      bookCategory = $("input[name=book]:checked").val(),
+      movieCategory = $("input[name=movie]:checked").val(),
+      songCategory = $("input[name=song]:checked").val(),
+    ]
+
+    // See which filters are checked
+    for (let i = 0; i < checkedBoxes.length; i++) {
+      if (checkedBoxes[i] == "book") {
+        bookSearch();
+      } else if (checkedBoxes[i] == "movie") {
+        movieSearch();
+      } else if (checkedBoxes[i] == "song") {
+        songSearch();
+      }
     }
+
+  })
+
+  // Global API Variables
+  var searchTerm = "boats";
+  var resultQuantity = 3;
+
+  // MOVIES: OMDB API
+  function movieSearch() {
+    var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
+    $.ajax({
+      url: omdbURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response.Search.slice(0, resultQuantity));
+    });
   }
 
-})
+  // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
+  function bookSearch() {
+    var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+    $.ajax({
+      url: olURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response.docs.slice(0, resultQuantity));
+    });
+  }
 
-// Global API Variables
-var searchTerm = "boats";
-var resultQuantity = 3;
+  // Music
+  function songSearch() {
+    var happiURL = "https://api.happi.dev/v1/music?q=" + searchTerm + "&limit=" + resultQuantity + "&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
+    $.ajax({
+      url: happiURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response.result);
+    });
+  }
 
-// MOVIES: OMDB API
-function movieSearch() {
-var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
-$.ajax({
-  url: omdbURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response.Search.slice(0,resultQuantity));
-});
-}
+  //Brian's Functions
 
-// BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
-function bookSearch() {
-var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
-$.ajax({
-  url: olURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response.docs.slice(0,resultQuantity));
-});
-}
+  var entries;
 
-// Music
-function songSearch() {
-var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ resultQuantity +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
-$.ajax({
-  url: happiURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response.result);
-});
-}
-
-//Brian's Functions
-
-var entries;
-
-if (!localStorage.getItem("entries")) {
-  $("#journal").html("");
-  entries = [];
-} else {
-  entries = JSON.parse(localStorage.getItem("entries"));
-  for (var j = entries.length - 1; j > -1; j--) {
+  if (!localStorage.getItem("entries")) {
+    $("#journal").html("");
+    entries = [];
+  } else {
+    entries = JSON.parse(localStorage.getItem("entries"));
+    for (var j = entries.length - 1; j > -1; j--) {
       let cardEl = $("<div>");
       cardEl.addClass("card m-3");
       let startupDiv = $("<div>");
@@ -82,30 +82,30 @@ if (!localStorage.getItem("entries")) {
       ${entries[j].rating} <i class="far fa-star"></i>`);
       cardEl.append(startupDiv);
       $("#journal").append(cardEl);
+    }
   }
-}
 
-$("#submission").click(function(event){
-  event.preventDefault();
-  var mediaItem = $("#item-input").val().trim();
-  var review = $("#review-area").val().trim();
-  var type = $("input[name='category']:checked").val();
-  var rating = $("#stars").val();
-  if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
-    $("#item-input").attr("placeholder" , "Your title here");
-    $("#media-type").attr("placeholder" , "Your media type here")
-    $("#review-area").attr("placeholder" , "Write a review");
-  } else {
-  entry = {
-    item: mediaItem,
-    review: review,
-    type: type,
-    rating: rating
-  }
-  entries.push(entry);
-  localStorage.setItem("entries" , JSON.stringify(entries));
-  appendJournal();
-  }
+  $("#submission").click(function (event) {
+    event.preventDefault();
+    var mediaItem = $("#item-input").val().trim();
+    var review = $("#review-area").val().trim();
+    var type = $("input[name='category']:checked").val();
+    var rating = $("#stars").val();
+    if (mediaItem === "" || type === "" || review === "" || review.length <= 30) {
+      $("#item-input").attr("placeholder", "Your title here");
+      $("#media-type").attr("placeholder", "Your media type here")
+      $("#review-area").attr("placeholder", "Write a review");
+    } else {
+      entry = {
+        item: mediaItem,
+        review: review,
+        type: type,
+        rating: rating
+      }
+      entries.push(entry);
+      localStorage.setItem("entries", JSON.stringify(entries));
+      appendJournal();
+    }
   })
 
   function appendJournal() {
@@ -121,12 +121,12 @@ $("#submission").click(function(event){
       cardDiv.append(appendDiv);
       $("#journal").append(cardDiv);
     }
-   }
+  }
 
-  $("#clear-click").on("click" , function() {
+  $("#clear-click").on("click", function () {
     entries = [];
-    localStorage.setItem("entries" , JSON.stringify(entries));
+    localStorage.setItem("entries", JSON.stringify(entries));
     $("#journal").html("");
-    
+
   })
 })
