@@ -3,8 +3,10 @@ $( document ).ready(function() {
 // Sam's Work
 
 // Go button Function
-$('.go-btn').click(function() {
+$('.go-btn').click(function(e) {
+  e.preventDefault();
   searchTerm = $('#input-field').val();
+  //console.log(searchTerm);
 
   // Search Filter Array
   var checkedBoxes = [
@@ -30,15 +32,20 @@ $('.go-btn').click(function() {
 // Global API Variables
 var searchTerm = "boats";
 var resultQuantity = 3;
+//Input and result id
 
 // MOVIES: OMDB API
-function movieSearch() {
+function movieSearch(searchEl) {
 var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
 $.ajax({
   url: omdbURL,
   method: "GET"
 }).then(function(response) {
+  console.log(response)
+  console.log(response.Search[0].Poster);
   console.log(response.Search.slice(0,resultQuantity));
+ 
+
 });
 }
 
