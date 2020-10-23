@@ -91,6 +91,7 @@ h4 {
 
 /* Suggestions Callout */
 #suggestions {
+    margin-top: 1.8rem;
     background-color: #bf79df9c;
     color: whitesmoke;
     border: whitesmoke;
@@ -126,4 +127,29 @@ footer {
     font-family: 'Cutive Mono', monospace;
     background-color: #026670;
     color: whitesmoke;
+}
+
+/*dinamic elements */
+div.box{
+    width:30%;
+    margin: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: 3rem;
+    border: solid;
+    background-color: #2c3e50;
+    text-align: center;
+    
+}
+div.box img{
+    width: 100%;
+}
+div.box1{
+    background-color: rgb(206, 206, 206);
+    margin: 1rem;
+}
+#reload{
+    border-radius: 8px;
+    margin-left: 10rem;
+    margin-bottom: 10px;
 }
