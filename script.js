@@ -25,6 +25,22 @@ $('#searchbtn ').click(function(e) {
     } else if (checkedBoxes[i] == "song") {
       songSearch();
     }
+
+  }
+
+  // Global API Variables
+  var searchTerm = "boats";
+  var resultQuantity = 3;
+
+  // MOVIES: OMDB API
+  function movieSearch() {
+    var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
+    $.ajax({
+      url: omdbURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response.Search.slice(0, resultQuantity));
+    });
   }
   
 })
@@ -208,30 +224,30 @@ if (!localStorage.getItem("entries")) {
       ${entries[j].rating} <i class="far fa-star"></i>`);
       cardEl.append(startupDiv);
       $("#journal").append(cardEl);
+    }
   }
-}
 
-$("#submission").click(function(event){
-  event.preventDefault();
-  var mediaItem = $("#item-input").val().trim();
-  var review = $("#review-area").val().trim();
-  var type = $("#media-type").val().trim();
-  var rating = $("#stars").val();
-  if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
-    $("#item-input").attr("placeholder" , "Your title here");
-    $("#media-type").attr("placeholder" , "Your media type here")
-    $("#review-area").attr("placeholder" , "Write a review");
-  } else {
-  entry = {
-    item: mediaItem,
-    review: review,
-    type: type,
-    rating: rating
-  }
-  entries.push(entry);
-  localStorage.setItem("entries" , JSON.stringify(entries));
-  appendJournal();
-  }
+  $("#submission").click(function (event) {
+    event.preventDefault();
+    var mediaItem = $("#item-input").val().trim();
+    var review = $("#review-area").val().trim();
+    var type = $("input[name='category']:checked").val();
+    var rating = $("#stars").val();
+    if (mediaItem === "" || type === "" || review === "" || review.length <= 30) {
+      $("#item-input").attr("placeholder", "Your title here");
+      $("#media-type").attr("placeholder", "Your media type here")
+      $("#review-area").attr("placeholder", "Write a review");
+    } else {
+      entry = {
+        item: mediaItem,
+        review: review,
+        type: type,
+        rating: rating
+      }
+      entries.push(entry);
+      localStorage.setItem("entries", JSON.stringify(entries));
+      appendJournal();
+    }
   })
 
   function appendJournal() {
@@ -247,12 +263,12 @@ $("#submission").click(function(event){
       cardDiv.append(appendDiv);
       $("#journal").append(cardDiv);
     }
-   }
+  }
 
-  $("#clear-click").on("click" , function() {
+  $("#clear-click").on("click", function () {
     entries = [];
-    localStorage.setItem("entries" , JSON.stringify(entries));
+    localStorage.setItem("entries", JSON.stringify(entries));
     $("#journal").html("");
-    
+
   })
 })
