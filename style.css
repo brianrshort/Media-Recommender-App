@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.wrap {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Background Image */
+body {
+    background-color: whitesmoke;
+    background-image: url("assets/images/gplaypattern_@2X.png")
+}
+
+/* Topbar and Hero */
+.topbar-desktop {
+    height: 100px;
+    color: #3fb0ac;
+    padding: 0;
+}
+
+.heart {
+    color: #be79df;
+}
+
+.logoqmr {
+    font-size: 50px;
+}
+
+.logoqmr, .qmr {
+    font-family: 'Major Mono Display', monospace;
+}
+
+.hero {
+    padding: 80px 0px;
+    height: 275px;
+}
+
+h2 {
+    color: #026670;
+}
+
+.slogan {
+    color: #3fb0ac;
+    font-size: 20px;
+    font-family: 'Cutive Mono', monospace;
+}
+
+h4 {
+    font-family: 'Cutive Mono', monospace;
+}
+
+/* Search Bar and Results Callout */
+#searchbar {
+    background-color: #ffe05d;
+    color: whitesmoke;
+    border: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.search {
+    padding: 10px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#searchbtn {
+    border-color: whitesmoke;
+    float: right;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.searchoptions {
+    padding-left: 1cm;
+}
+
+/* Search Results Callout */
+#searchresults {
+    background-color: rgb(206, 206, 206);
+    color: white;
+    border: whitesmoke;
+}
+
+/* Suggestions Callout */
+#suggestions {
+    background-color: #bf79df9c;
+    color: whitesmoke;
+    border: whitesmoke;
+    width: 90%;
+}
+
+/* New Review Callout */
+#newreview, #ratings {
+    background-color: #3fb0ac96;
+    color: whitesmoke;
+    border: whitesmoke;
+}
+
+#stars {
+    color: #ffdf4e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#submission, #clear-click {
+    border-radius: 10px;
+
+}
+
+/* Footer */
+footer {
+    padding: 10px;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Cutive Mono', monospace;
+    background-color: #026670;
+    color: whitesmoke;
+}

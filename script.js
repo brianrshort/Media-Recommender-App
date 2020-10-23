@@ -3,7 +3,7 @@ $( document ).ready(function() {
 // Sam's Work
 
 // Go button Function
-$('.go-btn').click(function(e) {
+$('#searchbtn ').click(function(e) {
   e.preventDefault();
   searchTerm = $('#input-field').val();
   //console.log(searchTerm);
@@ -26,7 +26,7 @@ $('.go-btn').click(function(e) {
       songSearch();
     }
   }
-
+  
 })
 
 // Global API Variables
@@ -35,39 +35,158 @@ var resultQuantity = 3;
 //Input and result id
 
 // MOVIES: OMDB API
-function movieSearch(searchEl) {
+function movieSearch() {
+  $('#input-field').val("");
 var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
+  $.ajax({
+    url: omdbURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response)
+    console.log(response.Search[0]);
+    //Betty's Work
+    // making loop for the movie search
+    var movies = response.Search;
+    var output = '';
+
+    $.each(movies,(index,movie)=>{
+      output += `
+      <div class = "grid-x" >
+          <div class ="cell large-auto" style="width: 200px;">
+            <img src = "${movie.Poster}">
+            <h5>${movie.Title}</h5>
+            <p>year:${movie.Year}</p>
+            <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
+          </div>   
+      </div>
+
+      `;
+
+    });
+  
+  $("#searchresults").html(output);//this print the result in the result box
+
+  });
+  
+ 
+}
+// WORKING ON MOVIE DETALE PAGE 
+
+/*
+function movieSelected(id){
+sessionStorage.setItem('movieId',id);
+window.location = 'movie.html';
+return false;
+
+}
+
+function getmovie(){
+  
+  
+  var movieId = sessionStorage.getItem('movieId')
+
+  var omdbURL = "https://www.omdbapi.com/?i=" + movieId + "&y=&plot=short&apikey=trilogy";
 $.ajax({
   url: omdbURL,
   method: "GET"
 }).then(function(response) {
   console.log(response)
-  console.log(response.Search[0].Poster);
-  console.log(response.Search.slice(0,resultQuantity));
- 
+
 
 });
 }
+getmovie()
+*/
 
 // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
 function bookSearch() {
+  $('#input-field').val("");
 var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
 $.ajax({
   url: olURL,
   method: "GET"
 }).then(function(response) {
-  console.log(response.docs.slice(0,resultQuantity));
+  console.log(response.docs);
+  //Betty's Work
+  //for loop for Books
+  var books = response.docs;
+
+ for(var i = 0; i < books.length; i++){
+  var divb = $("<div>").attr("class","box")
+  var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/" + books[i].isbn[0] +".jpg"  );//not working
+  var title = $("<h5>").text( books[i].title);
+  var year = $("<p>").text( books[i].publish_year);
+  var author = $("<p>").text( books[i].author_name);
+  $("#searchresults").append(divb);
+  divb.val("");
+  divb.append(artistImage);
+  divb.append(title);
+ divb.append(year);
+ divb.append(author);
+
+
+
+
+
+ }
+ // FOR LOOP DIFFERENT APPROACH
+
+  /*var books = response.docs;
+  var myoutput = '';
+
+  $.each(books,(index,book)=>{
+    myoutput += `
+    <div class = "wrap" >
+        <div class =" col-3" style="width: 150px">
+          <img src = "${book.isbn}">
+          <img src="http://covers.openlibrary.org/${book.isbn}.jpg" />
+          <h5>${book.title}</h5>
+          <p>year:${book.publish_year}</p>
+          <p>Author:${book.author_name}</p>
+        </div>   
+    </div>
+
+    `;
+
+
+  });
+
+  $("#searchresults").html(myoutput);
+  */
 });
 }
 
 // Music
 function songSearch() {
+  $('#input-field').val("");
+  
 var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ resultQuantity +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
 $.ajax({
   url: happiURL,
   method: "GET"
 }).then(function(response) {
-  console.log(response.result);
+  console.log(response)
+ console.log(response.result.cover);
+//Betty's Work 
+//for loop for songs
+ var songs = response.result;
+
+ for(var i = 0; i < songs.length; i++){
+  var divs = $("<div>").attr("class","box")
+  var artistImage = $("<img>").attr("src", songs[i].cover);
+  var artist = $("<h5>").text( songs[i].artist);
+  var album = $("<p>").text( songs[i].album);
+  $("#searchresults").append(divs);
+  divs.val("");
+  divs.append(artistImage);
+  divs.append(artist);
+ divs.append(album);
+
+
+
+
+ }
+
 });
 }
 
