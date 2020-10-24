@@ -107,7 +107,7 @@ $( document ).ready(function() {
   // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
   function bookSearch() {
     $('#input-field').val("");
-  var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+  var olURL = "https://openlibrary.org/search.json?q=" + searchTerm;
   $.ajax({
     url: olURL,
     method: "GET"
