@@ -193,7 +193,7 @@ $( document ).ready(function() {
     event.preventDefault();
     var mediaItem = $("#item-input").val().trim();
     var review = $("#review-area").val().trim();
-    var type = $("#media-type").val().trim();
+    var type = $("input[name=category]:checked").val();
     var rating = $("#stars").val();
     if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
       $("#item-input").attr("placeholder" , "Your title here");
@@ -235,3 +235,43 @@ $( document ).ready(function() {
     })
   })
   
+
+
+  //Suggestion functions
+  //var randSuggest = Math.floor(Math.random() * 3);
+  //if (randSuggest === 0) {
+    $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><button id='suggest' style='background-color: white;'>Get a rec</button>")
+    $("#suggest").on("click" , function (){
+      searchTerm = "imposter";
+      console.log(searchTerm)
+      $('#input-field').val("");
+      var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+      $.ajax({
+        url: olURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response.docs);
+        //Betty's Work
+        //for loop for Books
+        var books = response.docs;
+      
+      for(var i = 0; i < books.length; i++){
+        var divb = $("<div>").attr("class"," box")
+        var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
+        var title = $("<h5>").text( books[i].title);
+        var author = $("<p>").text( books[i].author_name);
+        $("#searchresults").append(divb);
+        divb.val("");
+        divb.append(artistImage);
+        divb.append(title);
+      divb.append(author);
+        }
+      })
+    })
+  /*} else if (randSuggest === 1) {
+    //Suggestion 2 code
+    })
+  } else if (randSuggest === 2) {
+    //Suggestion 3 code
+    })
+  }*/
