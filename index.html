@@ -1,182 +1,170 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-US" dir="ltr">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Quarantine Media Recommender</title>
-
-    <!-- Foundation Links (compressed css and js) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-        integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-
-    <!-- CSS Link -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <!-- JQuery Link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/6b1cbbe265.js" crossorigin="anonymous"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&family=Major+Mono+Display&display=swap"
-        rel="stylesheet">
-
-</head>
-
-<!-- Body -->
-
-<body>
-    <!-- Top bar -->
-    <div class="top-bar topbar-desktop">
-        <div class="wrap">
-            <div class="top-bar-left">
-                <h3><i class="fas fa-icons heart"></i><span class="logoqmr">QMR</span></h3>
+​
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <title>Quarantine Media Recommender</title>
+​
+        <!-- Foundation Links (compressed css and js) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+        
+        <!-- CSS Link -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <!-- JQuery Link -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/6b1cbbe265.js" crossorigin="anonymous"></script>
+​
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&family=Major+Mono+Display&display=swap" rel="stylesheet">
+        
+    </head>
+​
+    <!-- Body -->
+    <body>
+        <!-- Top bar -->
+        <div class="top-bar topbar-desktop">
+            <div class="wrap">
+                <div class="top-bar-left">
+                    <h3><i class="fas fa-icons heart"></i><span class="logoqmr">QMR</span></h3>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Hero section -->
-    <div class="hero">
-        <div class="wrap">
-            <h2>Introducing <span class="qmr">Quarantine Media Recommender</span></h2>
-            <p class="slogan"> A tool for killing boredom during quarantine.</p>
+​
+        <!-- Hero section -->
+        <div class="hero">
+            <div class="wrap">
+                <h2>Introducing <span class="qmr">Quarantine Media Recommender</span></h2>
+                <p class="slogan"> A tool for killing boredom during quarantine.</p>
+            </div>
         </div>
-    </div>
-
-    <div class="wrap">
-        <div class="grid-container">
-            <div class="grid-x grid-padding-x">
-                <div class="large-8 medium-8 small-8 cell">
-
-                    <!-- Search Bar and Button -->
-                    <div class="grid-x grid-padding-x">
-                        <div class="large-12 medium-12 small-12 cell">
-                            <div class="callout" id="searchbar">
-                                <div class="grid-x grid-padding-x">
-                                    <div class="large-11 medium-11 small-11 cell">
-                                        <input type="search" id="input-field" placeholder="Search">
-                                    </div>
-                                    <div class="large-1 medium-1 small-1 cell">
-                                        <button type="submit" class="button secondary hollow" id="searchbtn"><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-                                    <div class="searchoptions">
-                                        <input type="checkbox" name="book" value="book" id="search-type"><label
-                                            for="book">Book</label>
-                                        <input type="checkbox" name="movie" value="movie" id="search-type"><label
-                                            for="movie">Movie</label>
-                                        <input type="checkbox" name="song" value="song" id="search-type"><label
-                                            for="song">Song</label>
+​
+        <div class="wrap">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="large-8 medium-8 small-8 cell">
+​
+                        <!-- Search Bar and Button -->
+                        <div class="grid-x grid-padding-x">
+                            <div class="large-12 medium-12 small-12 cell">
+                                <div class="callout" id="searchbar">
+                                    <div class="grid-x grid-padding-x">
+                                        <div class="large-11 medium-11 small-11 cell">
+                                            <input id="input-field" type="search" placeholder="Search">
+                                        </div>
+                                        <div class="large-1 medium-1 small-1 cell">
+                                            <button type="submit" class="button secondary hollow" id="searchbtn"><i class="fas fa-search"></i></button>
+                                        </div>
+                                        <div class="searchoptions">
+                                            <input type="checkbox" name="book" value="book" id="search-type"><label for="book">Book</label>
+                                            <input type="checkbox" name="movie" value="movie" id="search-type"><label for="movie">Movie</label>
+                                            <input type="checkbox" name="song" value="song" id="search-type"><label for="song">Song</label>
+                                            <button id="reload" class="hollow button secondary" href="#">Clear</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Search Results -->
-                    <div class="grid-x grid-padding-x">
-                        <div class="large-12 medium-12 small-12 cell">
-                            <div class="callout" id="searchresults">
+​
+                        <!-- Search Results -->
+                        <div class="grid-x grid-padding-x">
+                            <div class="large-12 medium-12 small-12 cell box12">
+                                <hr>
                                 <h4>Search Results:</h4>
                                 <hr>
+                                <div class="grid-x " id="searchresults">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Suggestions -->
-                <div class="large-4 medium-4 small-4 cell">
-                    <div class="callout" id="suggestions">
-                        <h4>Suggestions:</h4>
-                        <hr>
+​
+                    <!-- Suggestions -->
+                    <div class="large-4 medium-4 small-4 cell">
+                        <div class="callout" id="suggestions">
+                            <h4>Suggestions:</h4>
+                            <hr>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <hr>
-
-            <!-- New Review -->
-            <form>
-                <div class="callout" id="newreview">
-                    <h4>New Review</h4>
-                    <div class="grid-x grid-padding-x">
-
-                        <!-- Input title for review -->
-                        <div class="large-5 medium-5 cell">
-                            <label>Title</label>
-                            <input id="item-input" type="text" placeholder="Thor: Ragnarok" required>
+​
+                <hr>
+​
+                <!-- New Review -->
+                <form>
+                    <div class="callout" id="newreview">
+                        <h4>New Review</h4>
+                        <div class="grid-x grid-padding-x">
+                            
+                            <!-- Input title for review -->
+                            <div class="large-5 medium-5 cell">
+                                <label>Title</label>
+                                <input id="item-input" type="text" placeholder="Thor: Ragnarok" required>
+                            </div>
+​
+                            <!-- Input category for review -->
+                            <div class="large-4 medium-4 cell">
+                                <label>Category</label>
+                                <input type="radio" name="category" value="book" id="media-type"><label for="book">Book</label>
+                                <input type="radio" name="category" value="movie" id="media-type" checked><label for="movie">Movie</label>
+                                <input type="radio" name="category" value="song" id="media-type"><label for="song">Song</label>
+                            </div>
+​
+                            <!-- Select star rating for review -->
+                            <div class="large-3 medium-3 cell">
+                                <label>Rating</label>
+                                <select name="stars" id="stars">
+                                    <option value="1">&bigstar; &star; &star; &star; &star;</option>
+                                    <option value="2">&bigstar; &bigstar; &star; &star; &star;</option>
+                                    <option value="3">&bigstar; &bigstar; &bigstar; &star; &star;</option>
+                                    <option value="4">&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
+                                    <option value="5" selected>&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
+                                </select>
+                            </div>
+​
+                            <!--Text area for review -->
+                            <div class="large-8 medium-8 small-8 cell">
+                                <label for="review-area">Review</label>
+                                <textarea id="review-area" name="review" rows="3" cols="40" placeholder="Best movie ever! God of Thunder...need I say more?!" minlength="30" required></textarea>
+                            </div>
+​
+                            <!-- Submit button for review -->
+                            <div class="large-2 medium-2 cell">
+                                <a href="#" class="button secondary" id="submission">Submit Review</a>
+                            </div>
+​
                         </div>
-
-                        <!-- Input category for review -->
-                        <div class="large-4 medium-4 cell">
-                            <label>Category</label>
-                            <input type="radio" name="category" value="book" id="media-type"><label
-                                for="book">Book</label>
-                            <input type="radio" name="category" value="movie" id="media-type" checked><label
-                                for="movie">Movie</label>
-                            <input type="radio" name="category" value="song" id="media-type"><label
-                                for="song">Song</label>
-                        </div>
-
-                        <!-- Select star rating for review -->
-                        <div class="large-3 medium-3 cell">
-                            <label>Rating</label>
-                            <select name="stars" id="stars">
-                                <option value="1">&bigstar; &star; &star; &star; &star;</option>
-                                <option value="2">&bigstar; &bigstar; &star; &star; &star;</option>
-                                <option value="3">&bigstar; &bigstar; &bigstar; &star; &star;</option>
-                                <option value="4">&bigstar; &bigstar; &bigstar; &bigstar; &star;</option>
-                                <option value="5" selected>&bigstar; &bigstar; &bigstar; &bigstar; &bigstar;</option>
-                            </select>
-                        </div>
-
-                        <!--Text area for review -->
-                        <div class="large-8 medium-8 small-8 cell">
-                            <label for="review-area">Review</label>
-                            <textarea id="review-area" name="review" rows="3" cols="40"
-                                placeholder="Best movie ever! God of Thunder...need I say more?!" minlength="30"
-                                required></textarea>
-                        </div>
-
-                        <!-- Submit button for review -->
-                        <div class="large-2 medium-2 cell">
-                            <a href="#" class="button secondary" id="submission">Submit Review</a>
-                        </div>
-
                     </div>
-                </div>
-            </form>
-
-            <!-- Previous Reviews/Ratings Listed -->
-            <div class="grid-x grid-padding-x">
-                <div class="large-12 cell">
-                    <div class="callout" id="ratings">
-                        <h4>Ratings:</h4>
-                        <hr>
-                        <button id="clear-click" class="button secondary hollow">Clear History</button>
-                        <div id="journal"></div>
+                </form>
+            
+                <!-- Previous Reviews/Ratings Listed -->
+                <div class="grid-x grid-padding-x">
+                    <div class="large-12 cell">
+                        <div class="callout" id="ratings">
+                            <h4>Ratings:</h4>
+                            <hr>
+                            <button id="clear-click" class="button secondary hollow">Clear History</button>
+                            <div id="journal"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div>
-            <p> Copyright &copy; 2020 .spartans(); </p>
-        </div>
-    </footer>
-
-    <!-- Javascript -->
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script1.js"></script>
-
-</body>
-
+​
+        <!-- Footer -->
+        <footer>
+            <div>
+                <p> Copyright &copy; 2020 .spartans(); </p>
+            </div>
+        </footer>
+​
+        <!-- Javascript -->
+        <script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+       
+    </body>
 </html>
