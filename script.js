@@ -62,7 +62,7 @@ $( document ).ready(function() {
               <img src = "${movie.Poster}">
               <h5>${movie.Title}</h5>
               <p>year:${movie.Year}</p>
-              <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
+              <a href = "http://imdb.com/title/${movie.imdbID}" class="hollow button secondary mbtn" style = " border-radius: 8px; margin-left:45px;" target="_blank" >IMDB</a>
             </div>   
       
   
