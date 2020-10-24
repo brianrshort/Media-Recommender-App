@@ -62,7 +62,7 @@ $( document ).ready(function() {
               <img src = "${movie.Poster}">
               <h5>${movie.Title}</h5>
               <p>year:${movie.Year}</p>
-              <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
+              <a href = "http://imdb.com/title/${movie.imdbID}" class="hollow button secondary mbtn" style = " border-radius: 8px; margin-left:45px;" target="_blank" >IMDB</a>
             </div>   
       
   
@@ -107,7 +107,7 @@ $( document ).ready(function() {
   // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
   function bookSearch() {
     $('#input-field').val("");
-  var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+  var olURL = "https://openlibrary.org/search.json?q=" + searchTerm;
   $.ajax({
     url: olURL,
     method: "GET"
@@ -119,7 +119,7 @@ $( document ).ready(function() {
   
    for(var i = 0; i < books.length; i++){
     var divb = $("<div>").attr("class"," box")
-    var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
+    var artistImage = $("<img>").attr("src","https://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
     var title = $("<h5>").text( books[i].title);
     var author = $("<p>").text( books[i].author_name);
     $("#searchresults").append(divb);
