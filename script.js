@@ -28,6 +28,12 @@ $('#searchbtn ').click(function(e) {
   }
   
 })
+//RELOAD BUTTON
+//Bettys work
+$('#reload').on("click",function(){
+  window.location.reload(true);
+
+})
 
 // Global API Variables
 var searchTerm = "boats";
@@ -51,14 +57,14 @@ var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apike
 
     $.each(movies,(index,movie)=>{
       output += `
-      <div class = "grid-x" >
-          <div class ="cell large-auto" style="width: 200px;">
+      
+          <div class =" box" >
             <img src = "${movie.Poster}">
             <h5>${movie.Title}</h5>
             <p>year:${movie.Year}</p>
             <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
           </div>   
-      </div>
+    
 
       `;
 
@@ -112,47 +118,19 @@ $.ajax({
   var books = response.docs;
 
  for(var i = 0; i < books.length; i++){
-  var divb = $("<div>").attr("class","box")
-  var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/" + books[i].isbn[0] +".jpg"  );//not working
+  var divb = $("<div>").attr("class"," box")
+  var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
   var title = $("<h5>").text( books[i].title);
-  var year = $("<p>").text( books[i].publish_year);
   var author = $("<p>").text( books[i].author_name);
   $("#searchresults").append(divb);
   divb.val("");
   divb.append(artistImage);
   divb.append(title);
- divb.append(year);
  divb.append(author);
 
 
-
-
-
  }
- // FOR LOOP DIFFERENT APPROACH
 
-  /*var books = response.docs;
-  var myoutput = '';
-
-  $.each(books,(index,book)=>{
-    myoutput += `
-    <div class = "wrap" >
-        <div class =" col-3" style="width: 150px">
-          <img src = "${book.isbn}">
-          <img src="http://covers.openlibrary.org/${book.isbn}.jpg" />
-          <h5>${book.title}</h5>
-          <p>year:${book.publish_year}</p>
-          <p>Author:${book.author_name}</p>
-        </div>   
-    </div>
-
-    `;
-
-
-  });
-
-  $("#searchresults").html(myoutput);
-  */
 });
 }
 
@@ -172,7 +150,7 @@ $.ajax({
  var songs = response.result;
 
  for(var i = 0; i < songs.length; i++){
-  var divs = $("<div>").attr("class","box")
+  var divs = $("<div>").attr("class","cell large-auto  box")
   var artistImage = $("<img>").attr("src", songs[i].cover);
   var artist = $("<h5>").text( songs[i].artist);
   var album = $("<p>").text( songs[i].album);
