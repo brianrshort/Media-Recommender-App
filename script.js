@@ -238,40 +238,111 @@ $( document ).ready(function() {
 
 
   //Suggestion functions
-  //var randSuggest = Math.floor(Math.random() * 3);
-  //if (randSuggest === 0) {
-    $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><button id='suggest' style='background-color: white;'>Get a rec</button>")
-    $("#suggest").on("click" , function (){
-      searchTerm = "imposter";
-      console.log(searchTerm)
-      $('#input-field').val("");
-      var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+    var randSuggest = Math.floor(Math.random() * 3);
+    console.log(randSuggest);
+    if (randSuggest === 0) {
+      $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
+      $("#suggest").on("click" , function (event){
+        event.preventDefault();
+        searchTerm = "imposter";
+        console.log(searchTerm)
+        $('#input-field').val("");
+        var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+        $.ajax({
+          url: olURL,
+          method: "GET"
+        }).then(function(response) {
+          console.log(response.docs);
+          //Betty's Work
+          //for loop for Books
+          var books = response.docs;
+        
+        for(var i = 0; i < books.length; i++){
+          var divb = $("<div>").attr("class"," box")
+          var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
+          var title = $("<h5>").text( books[i].title);
+          var author = $("<p>").text( books[i].author_name);
+          $("#searchresults").html("");
+          $("#searchresults").append(divb);
+          divb.val("");
+          divb.append(artistImage);
+          divb.append(title);
+        divb.append(author);
+          }
+        })
+      })
+    } else if (randSuggest === 1) {
+      //Suggestion 2 code
+      $("#suggestions").html("<h3>Suggestions</h3><br>How about some movies like Tiger King?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
+      $("#suggest").on("click" , function (event){
+        event.preventDefault();
+        searchTerm = "tiger";
+        var omdbURL = "https://www.omdbapi.com/?s=" + searchTerm + "&y=&plot=short&apikey=trilogy";
       $.ajax({
-        url: olURL,
+        url: omdbURL,
         method: "GET"
       }).then(function(response) {
-        console.log(response.docs);
+        console.log(response)
+        console.log(response.Search[0]);
         //Betty's Work
-        //for loop for Books
-        var books = response.docs;
+        // making loop for the movie search
+        var movies = response.Search;
+        var output = '';
+    
+        $.each(movies,(index,movie)=>{
+          output +=  `
+          
+              <div class =" box" >
+                <img src = "${movie.Poster}">
+                <h5>${movie.Title}</h5>
+                <p>year:${movie.Year}</p>
+                <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
+              </div>   
+        
+    
+          `;
+    
+        });
       
-      for(var i = 0; i < books.length; i++){
-        var divb = $("<div>").attr("class"," box")
-        var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
-        var title = $("<h5>").text( books[i].title);
-        var author = $("<p>").text( books[i].author_name);
-        $("#searchresults").append(divb);
-        divb.val("");
-        divb.append(artistImage);
-        divb.append(title);
-      divb.append(author);
-        }
-      })
+      $("#searchresults").html(output);//this print the result in the result box
+    
+      });
+      
+     
+    
     })
-  /*} else if (randSuggest === 1) {
-    //Suggestion 2 code
+    
+    } else if (randSuggest === 2) {
+      //Suggestion 3 code
+      $("#suggestions").html("<h3>Suggestions</h3><br>How about some good news?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
+      $("#suggest").on("click" , function (event){
+        event.preventDefault();
+        searchTerm = "good";
+        var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ 5 +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
+      $.ajax({
+        url: happiURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response)
+      console.log(response.result.cover);
+      //Betty's Work 
+      //for loop for songs
+      var songs = response.result;
+      $("#searchresults").html("");
+      for(var i = 0; i < 3; i++){
+        var divs = $("<div>").attr("class","cell large-auto  box")
+        var artistImage = $("<img>").attr("src", songs[i].cover);
+        var artist = $("<h5>").text( songs[i].artist);
+        var album = $("<p>").text( songs[i].album);
+        $("#searchresults").append(divs);
+        divs.val("");
+        divs.append(artistImage);
+        divs.append(artist);
+        divs.append(album);
+  
+     }
+    
+    });
     })
-  } else if (randSuggest === 2) {
-    //Suggestion 3 code
-    })
-  }*/
+    
+  }
