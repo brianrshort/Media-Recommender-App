@@ -193,7 +193,7 @@ $( document ).ready(function() {
     event.preventDefault();
     var mediaItem = $("#item-input").val().trim();
     var review = $("#review-area").val().trim();
-    var type = $("#media-type").val().trim();
+    var type = $("input[name=category]:checked").val();
     var rating = $("#stars").val();
     if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
       $("#item-input").attr("placeholder" , "Your title here");
