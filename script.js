@@ -1,13 +1,13 @@
 $( document ).ready(function() {
-    
+  
   // Sam's Work
-
+  
   // Go button Function
   $('#searchbtn ').click(function(e) {
     e.preventDefault();
     searchTerm = $('#input-field').val();
     //console.log(searchTerm);
-
+  
     // Search Filter Array
     var checkedBoxes = [
     
@@ -15,7 +15,7 @@ $( document ).ready(function() {
     movieCategory = $("input[name=movie]:checked").val(),
     songCategory = $("input[name=song]:checked").val(),
     ]
-
+  
     // See which filters are checked
     for (let i = 0; i < checkedBoxes.length; i++) {
       if (checkedBoxes[i] == "book") {
@@ -25,19 +25,21 @@ $( document ).ready(function() {
       } else if (checkedBoxes[i] == "song") {
         songSearch();
       }
-
     }
+    
   });
-  //Betty
- //Reload button
-$("#reload").on("click",function(){
-  window.location.reload(true)
-})
+  //RELOAD BUTTON
+  //Bettys work
+  $('#reload').on("click",function(){
+    window.location.reload(true);
+  
+  })
+  
   // Global API Variables
   var searchTerm = "boats";
   var resultQuantity = 3;
   //Input and result id
-
+  
   // MOVIES: OMDB API
   function movieSearch() {
     $('#input-field').val("");
@@ -51,28 +53,57 @@ $("#reload").on("click",function(){
       //Betty's Work
       // making loop for the movie search
       var movies = response.Search;
-
-      for(var i = 0; i < movies.length; i++){
-        var divm = $("<div>").attr("class","box")
-        var poster = $("<img>").attr("src",movies[i].Poster  );
-        var title = $("<h5>").text( movies[i].Title);
-        var year = $("<p>").text( movies[i].Year);
+      var output = '';
+  
+      $.each(movies,(index,movie)=>{
+        output +=  `
+        
+            <div class =" box" >
+              <img src = "${movie.Poster}">
+              <h5>${movie.Title}</h5>
+              <p>year:${movie.Year}</p>
+              <a onclick = "movieSelected('${movie.imdbID}')" class = "btn" href = "#">Movie Details</a>
+            </div>   
+      
+  
+        `;
+  
+      });
     
-        $("#searchresults").append(divm);
-        divm.val("");
-        divm.append(poster);
-        divm.append(title);
-      divm.append(year);
-
-
-    }
-
+    $("#searchresults").html(output);//this print the result in the result box
+  
     });
     
+   
+  }
+  // WORKING ON MOVIE DETALE PAGE 
+  
+  /*
+  function movieSelected(id){
+  sessionStorage.setItem('movieId',id);
+  window.location = 'movie.html';
+  return false;
   
   }
- 
-
+  
+  function getmovie(){
+    
+    
+    var movieId = sessionStorage.getItem('movieId')
+  
+    var omdbURL = "https://www.omdbapi.com/?i=" + movieId + "&y=&plot=short&apikey=trilogy";
+  $.ajax({
+    url: omdbURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response)
+  
+  
+  });
+  }
+  getmovie()
+  */
+  
   // BOOKS: Open Library API ~DELAYED RESPONSE +/- 8 Seconds~
   function bookSearch() {
     $('#input-field').val("");
@@ -85,29 +116,24 @@ $("#reload").on("click",function(){
     //Betty's Work
     //for loop for Books
     var books = response.docs;
-
-  for(var i = 0; i < books.length; i++){
-    var divb = $("<div>").attr("class","box")
-    var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/" + books[i].isbn[i] +".jpg"  );//not working
+  
+   for(var i = 0; i < books.length; i++){
+    var divb = $("<div>").attr("class"," box")
+    var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
     var title = $("<h5>").text( books[i].title);
-    var year = $("<p>").text( books[i].publish_year);
     var author = $("<p>").text( books[i].author_name);
     $("#searchresults").append(divb);
     divb.val("");
     divb.append(artistImage);
     divb.append(title);
-  divb.append(year);
-  divb.append(author);
-
-
-
-
-
- }
-
+   divb.append(author);
+  
+  
+   }
+  
   });
   }
-
+  
   // Music
   function songSearch() {
     $('#input-field').val("");
@@ -118,13 +144,13 @@ $("#reload").on("click",function(){
     method: "GET"
   }).then(function(response) {
     console.log(response)
-  console.log(response.result.cover);
+   console.log(response.result.cover);
   //Betty's Work 
   //for loop for songs
-  var songs = response.result;
-
-  for(var i = 0; i < songs.length; i++){
-    var divs = $("<div>").attr("class"," cell large-auto box");
+   var songs = response.result;
+  
+   for(var i = 0; i < songs.length; i++){
+    var divs = $("<div>").attr("class","cell large-auto  box")
     var artistImage = $("<img>").attr("src", songs[i].cover);
     var artist = $("<h5>").text( songs[i].artist);
     var album = $("<p>").text( songs[i].album);
@@ -132,20 +158,20 @@ $("#reload").on("click",function(){
     divs.val("");
     divs.append(artistImage);
     divs.append(artist);
-  divs.append(album);
-
-
-
-
-  }
-
+   divs.append(album);
+  
+  
+  
+  
+   }
+  
   });
   }
-
+  
   //Brian's Functions
-
+  
   var entries;
-
+  
   if (!localStorage.getItem("entries")) {
     $("#journal").html("");
     entries = [];
@@ -160,32 +186,32 @@ $("#reload").on("click",function(){
         ${entries[j].rating} <i class="far fa-star"></i>`);
         cardEl.append(startupDiv);
         $("#journal").append(cardEl);
-      }
     }
-
-    $("#submission").click(function (event) {
-      event.preventDefault();
-      var mediaItem = $("#item-input").val().trim();
-      var review = $("#review-area").val().trim();
-      var type = $("input[name='category']:checked").val();
-      var rating = $("#stars").val();
-      if (mediaItem === "" || type === "" || review === "" || review.length <= 30) {
-        $("#item-input").attr("placeholder", "Your title here");
-        $("#media-type").attr("placeholder", "Your media type here")
-        $("#review-area").attr("placeholder", "Write a review");
-      } else {
-        entry = {
-          item: mediaItem,
-          review: review,
-          type: type,
-          rating: rating
-        }
-        entries.push(entry);
-        localStorage.setItem("entries", JSON.stringify(entries));
-        appendJournal();
-      }
+  }
+  
+  $("#submission").click(function(event){
+    event.preventDefault();
+    var mediaItem = $("#item-input").val().trim();
+    var review = $("#review-area").val().trim();
+    var type = $("#media-type").val().trim();
+    var rating = $("#stars").val();
+    if (mediaItem === "" ||  type === "" || review === "" || review.length <= 30){
+      $("#item-input").attr("placeholder" , "Your title here");
+      $("#media-type").attr("placeholder" , "Your media type here")
+      $("#review-area").attr("placeholder" , "Write a review");
+    } else {
+    entry = {
+      item: mediaItem,
+      review: review,
+      type: type,
+      rating: rating
+    }
+    entries.push(entry);
+    localStorage.setItem("entries" , JSON.stringify(entries));
+    appendJournal();
+    }
     })
-
+  
     function appendJournal() {
       $("#journal").html("");
       entries = JSON.parse(localStorage.getItem("entries"));
@@ -199,13 +225,13 @@ $("#reload").on("click",function(){
         cardDiv.append(appendDiv);
         $("#journal").append(cardDiv);
       }
-    }
-
-    $("#clear-click").on("click", function () {
+     }
+  
+    $("#clear-click").on("click" , function() {
       entries = [];
-      localStorage.setItem("entries", JSON.stringify(entries));
+      localStorage.setItem("entries" , JSON.stringify(entries));
       $("#journal").html("");
-
+      
     })
-    
-});
+  })
+  
