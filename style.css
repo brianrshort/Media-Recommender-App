@@ -87,9 +87,7 @@ h4 {
     background-color: rgb(206, 206, 206);
     color: white;
     border: whitesmoke;
-    /*Betty added this part*/
-    border-radius: 5px;
-    margin-left: 1rem;
+  
     
 }
 
@@ -136,7 +134,9 @@ footer {
 /*betty*/
 /*DYNAMIC ELEMENTS*/
 div.box12{
-    background-color:rgb(206, 206, 206); ;
+    background-color:rgb(206, 206, 206); 
+    border-radius: 5px;
+    margin-left: 1rem;
 }
 div.box{
     margin-right: 1rem;

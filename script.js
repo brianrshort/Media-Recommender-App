@@ -119,7 +119,7 @@ $( document ).ready(function() {
   
    for(var i = 0; i < books.length; i++){
     var divb = $("<div>").attr("class"," box")
-    var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
+    var artistImage = $("<img>").attr("src","https://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
     var title = $("<h5>").text( books[i].title);
     var author = $("<p>").text( books[i].author_name);
     $("#searchresults").append(divb);
