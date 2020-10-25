@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img width="485px" src="assets/images/titleImage.png">
+    <img src="assets/images/titleImage.png" style="width: 485px">
 </p>
 
 <h2 align="center">
@@ -18,7 +18,6 @@
 <br>
 
 <h2>Project Requirements</h2>
-<hr>
 <ol>
     <li>Must use at least two server-side APIs</li>
     <li>Must use a CSS framework other than Bootstrap</li>
@@ -32,7 +31,6 @@
 <br>
 
 <h2>Description</h2>
-<hr>
 <p>We get it. You're bored.</p>
 <p>There's only so many times you can rewatch
 Homecoming or Love is Blind or whatever while you're
@@ -52,7 +50,6 @@ thought when you watched Tiger King the first time.</p>
 <br>
 
 <h2>How to Use</h2>
-<hr>
 <ol>
     <li>Decide on a topic to search and enter it into the search field in the yellow section. Tip: If you can't think of a topic, try out our randomly suggested topics in pink.</li>
     <br>
@@ -65,7 +62,6 @@ thought when you watched Tiger King the first time.</p>
 <br>
 
 <h2>Contributors</h2>
-<hr>
 <ul>
     <li>
         <p>@stricklin927</p>
@@ -86,16 +82,20 @@ thought when you watched Tiger King the first time.</p>
 <br>
 
 <h2>Lessons Learned</h2>
-<hr>
 <ul>
     <li>@stricklin927:</li>
     <li>@bettycode:</li>
+        <ul>
+            <li>Working with other developers</li>
+            <li>Understanding the workflow</li>
+        </ul>
     <li>@brianshort:</li>
     <li>@jsegnegon:</li>
     <li>@sambishop3015:
         <ul>
             <li>API security types; HTML, OAuth, Key</li>
             <li>Readme design tricks including gifs</li>
+            <li>Working with developers and using Git branches</li>
         </ul>
     </li>
 </ul>
