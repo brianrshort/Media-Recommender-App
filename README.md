@@ -22,7 +22,7 @@
     <li>Must use at least two server-side APIs</li>
     <li>Must use a CSS framework other than Bootstrap</li>
     <li>Must use client-side storage to store persistent data</li>
-    <li>Must have apolished, mobile-first UI</li>
+    <li>Must have a polished, mobile-first UI</li>
     <li>Must meet good quality coding standards (indentation, scoping, naming, etc.)</li>
     <li>Does NOT use alerts, confirms, or prompts (look into modals)</li>
     <li>Must be deployed to GitHub Pages</li>
@@ -32,10 +32,10 @@
 
 <h2>Description</h2>
 <p>We get it. You're bored.</p>
-<p>There's only so many times you can rewatch
+<p>There's only so many times you can re-watch
 Homecoming or Love is Blind or whatever while you're
 working, living, and connecting remotely.</p>
-<p>The Quarantine Media Reccomender (QMR) can help.
+<p>The Quarantine Media Recommender (QMR) can help.
 You type in your topic of interest and the QMR delivers a
 list of books, movies, or songs to explore while you're
 waiting for your groceries to get delivered.</p>
