@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img src="assets/images/titleImage.png" style="width: 485px">
+    <img width="485px" src="assets/images/titleImage.jpg">
 </p>
 
 <h2 align="center">
