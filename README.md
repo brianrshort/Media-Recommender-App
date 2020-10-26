@@ -65,18 +65,37 @@ thought when you watched Tiger King the first time.</p>
 <ul>
     <li>
         <p>@stricklin927</p>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
     </li>
     <li>
         <p>@bettycode</p>
+        <ul>
+            <li>Results Section</li>
+            <li>IMBD Links</li>
+        </ul>
     </li>
     <li>
         <p>@brianshort</p>
+        <ul>
+            <li>Ratings & Reviews</li>
+            <li>Random Category Suggester</li>
+        </ul>
     </li>
     <li>
         <p>@jsegnegon</p>
+        <ul>
+            <li>Suggestion Box</li>
+        </ul>
     </li>
     <li>
         <p>@sambishop3015</p>
+        <ul>
+            <li>APIs</li>
+            <li>README</li>
+        </ul>
     </li>
 </ul>
 <br>
@@ -90,10 +109,14 @@ thought when you watched Tiger King the first time.</p>
             <li>Understanding the workflow</li>
         </ul>
     <li>@brianshort:</li>
+    <ul>
+            <li>Increased fluency with API objects</li>
+            <li>Git collaboration methods</li>
+        </ul>
     <li>@jsegnegon:</li>
     <li>@sambishop3015:
         <ul>
-            <li>API security types; HTML, OAuth, Key</li>
+            <li>API types; HTML, OAuth, Key</li>
             <li>Readme design tricks including gifs</li>
             <li>Working with developers and using Git branches</li>
         </ul>
