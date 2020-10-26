@@ -18,6 +18,16 @@ body {
     background-image: url("assets/images/gplaypattern_@2X.png")
 }
 
+/* Headings */
+h2 {
+    color: #026670;
+}
+
+h4, h3 {
+    font-family: 'Cutive Mono', monospace;
+    color: white;
+}
+
 /* Topbar and Hero */
 .topbar-desktop {
     height: 100px;
@@ -31,6 +41,7 @@ body {
 
 .logoqmr {
     font-size: 50px;
+    color: #3fb0ac;
 }
 
 .logoqmr, .qmr {
@@ -42,17 +53,9 @@ body {
     height: 275px;
 }
 
-h2 {
-    color: #026670;
-}
-
 .slogan {
     color: #3fb0ac;
     font-size: 20px;
-    font-family: 'Cutive Mono', monospace;
-}
-
-h4 {
     font-family: 'Cutive Mono', monospace;
 }
 
@@ -90,13 +93,22 @@ h4 {
     border: whitesmoke;
 }
 
+#searchres {
+    padding: 10px;
+}
+
 /* Suggestions Callout */
 #suggestions {
-    margin-top: 1.8rem;
     background-color: #bf79df9c;
     color: whitesmoke;
     border: whitesmoke;
     width: 90%;
+    margin: 35px;
+}
+
+#suggest {
+    justify-content: center;
+    align-items: center;
 }
 
 /* New Review Callout */
@@ -160,6 +172,7 @@ div.box h5{
     margin-bottom: 10px;
     border-radius: 8px;
 }
+
 /*@media helps to make the elements responsive*/
 /*--this are used for search result div*/
 @media screen and (max-width:1130px){
