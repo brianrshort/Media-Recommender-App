@@ -1,16 +1,13 @@
 $( document ).ready(function() {
   
   // Sam's Work
-  
   // Go button Function
   $('#searchbtn ').click(function(e) {
     e.preventDefault();
     searchTerm = $('#input-field').val();
-    //console.log(searchTerm);
   
     // Search Filter Array
     var checkedBoxes = [
-    
     bookCategory = $("input[name=book]:checked").val(),
     movieCategory = $("input[name=movie]:checked").val(),
     songCategory = $("input[name=song]:checked").val(),
@@ -236,7 +233,7 @@ $( document ).ready(function() {
       $("#journal").html("");
       
     })
-  })
+  
   
 
 
@@ -247,7 +244,7 @@ $( document ).ready(function() {
       $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
       $("#suggest").on("click" , function (event){
         event.preventDefault();
-        searchTerm = "imposter";
+        searchTerm = "fake";
         console.log(searchTerm)
         $('#input-field').val("");
         var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
@@ -321,15 +318,18 @@ $( document ).ready(function() {
       $("#suggest").on("click" , function (event){
         event.preventDefault();
         searchTerm = "good";
-        var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ 5 +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
+        getSongs();
+    })
+    
+  }
+
+
+  function getSongs(){
+    var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ 5 +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
       $.ajax({
         url: happiURL,
         method: "GET"
       }).then(function(response) {
-        console.log(response)
-      console.log(response.result.cover);
-      //Betty's Work 
-      //for loop for songs
       var songs = response.result;
       $("#searchresults").html("");
       for(var i = 0; i < 3; i++){
@@ -342,10 +342,8 @@ $( document ).ready(function() {
         divs.append(artistImage);
         divs.append(artist);
         divs.append(album);
-  
      }
-    
     });
-    })
-    
   }
+
+})
