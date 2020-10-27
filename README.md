@@ -26,7 +26,7 @@
     <li>Must meet good quality coding standards (indentation, scoping, naming, etc.)</li>
     <li>Does NOT use alerts, confirms, or prompts (look into modals)</li>
     <li>Must be deployed to GitHub Pages</li>
-    <li>Must be interactive (i.e: accept and responf to user input)</li>
+    <li>Must be interactive (i.e: accept and respond to user input)</li>
 </ol>
 <br>
 
