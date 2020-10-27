@@ -1,13 +1,16 @@
 $( document ).ready(function() {
   
   // Sam's Work
+  
   // Go button Function
   $('#searchbtn ').click(function(e) {
     e.preventDefault();
     searchTerm = $('#input-field').val();
+    //console.log(searchTerm);
   
     // Search Filter Array
     var checkedBoxes = [
+    
     bookCategory = $("input[name=book]:checked").val(),
     movieCategory = $("input[name=movie]:checked").val(),
     songCategory = $("input[name=song]:checked").val(),
@@ -59,7 +62,7 @@ $( document ).ready(function() {
               <img src = "${movie.Poster}">
               <h5>${movie.Title}</h5>
               <p>year:${movie.Year}</p>
-              <a href = "http://imdb.com/title/${movie.imdbID}" class="hollow button secondary mbtn" style = " border-radius: 8px; margin-left:45px;" target="_blank" >IMDB</a>
+              <a href = "http://imdb.com/title/${movie.imdbID}" class="hollow button secondary mbtn" style = " border-radius: 8px; margin-left:55px;   color: whitesmoke; border: solid 1px whitesmoke; " target="_blank" >IMDB</a>
             </div>   
       
   
@@ -233,7 +236,7 @@ $( document ).ready(function() {
       $("#journal").html("");
       
     })
-  
+  })
   
 
 
@@ -244,7 +247,6 @@ $( document ).ready(function() {
       $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
       $("#suggest").on("click" , function (event){
         event.preventDefault();
-        $("#searchresults").html("");
         searchTerm = "imposter";
         console.log(searchTerm)
         $('#input-field').val("");
@@ -258,12 +260,12 @@ $( document ).ready(function() {
           //for loop for Books
           var books = response.docs;
         
-        for(var i = 0; i < 4; i++){
+        for(var i = 0; i < books.length; i++){
           var divb = $("<div>").attr("class"," box")
           var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
-          console.log(books[i])
           var title = $("<h5>").text( books[i].title);
           var author = $("<p>").text( books[i].author_name);
+          $("#searchresults").html("");
           $("#searchresults").append(divb);
           divb.val("");
           divb.append(artistImage);
@@ -319,18 +321,15 @@ $( document ).ready(function() {
       $("#suggest").on("click" , function (event){
         event.preventDefault();
         searchTerm = "good";
-        getSongs();
-    })
-    
-  }
-
-
-  function getSongs(){
-    var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ 5 +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
+        var happiURL = "https://api.happi.dev/v1/music?q="+ searchTerm +"&limit="+ 5 +"&apikey=d2578aRvlgVm9prmFLblu2AxeoRSuOLl6Wmq3GTc9AXmUeZjscLyIK9b&type=track";
       $.ajax({
         url: happiURL,
         method: "GET"
       }).then(function(response) {
+        console.log(response)
+      console.log(response.result.cover);
+      //Betty's Work 
+      //for loop for songs
       var songs = response.result;
       $("#searchresults").html("");
       for(var i = 0; i < 3; i++){
@@ -343,8 +342,10 @@ $( document ).ready(function() {
         divs.append(artistImage);
         divs.append(artist);
         divs.append(album);
+  
      }
+    
     });
+    })
+    
   }
-
-})
