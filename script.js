@@ -247,10 +247,11 @@ $( document ).ready(function() {
       $("#suggestions").html("<h3>Suggestions</h3><br>How about some books like Among Us?<br><br><a id='suggest' class='hollow button secondary' href='#'>Get a rec</a>")
       $("#suggest").on("click" , function (event){
         event.preventDefault();
+        $("#searchresults").html("");
         searchTerm = "imposter";
         console.log(searchTerm)
         $('#input-field').val("");
-        var olURL = "http://openlibrary.org/search.json?q=" + searchTerm;
+        var olURL = "https://openlibrary.org/search.json?q=" + searchTerm;
         $.ajax({
           url: olURL,
           method: "GET"
@@ -262,10 +263,10 @@ $( document ).ready(function() {
         
         for(var i = 0; i < books.length; i++){
           var divb = $("<div>").attr("class"," box")
-          var artistImage = $("<img>").attr("src","http://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
+          var artistImage = $("<img>").attr("src","https://covers.openlibrary.org/b/isbn/" + books[i].isbn[1] +".jpg"  );//not working
           var title = $("<h5>").text( books[i].title);
           var author = $("<p>").text( books[i].author_name);
-          $("#searchresults").html("");
+
           $("#searchresults").append(divb);
           divb.val("");
           divb.append(artistImage);
