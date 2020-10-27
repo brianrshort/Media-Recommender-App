@@ -63,27 +63,37 @@ thought when you watched Tiger King the first time.</p>
 
 <h2>Contributors</h2>
 <ul>
-    <li>@stricklin927</li>
+    <li>
+        <a href="https://github.com/stricklin927">@stricklin927</a>
+    </li>
         <ul>
             <li>HTML</li>
             <li>CSS</li>
             <li>Foundation</li>
         </ul>
-    <li>@bettycode</li>
+    <li>
+        <a href="https://github.com/bettycode">@bettycode</a>
+    </li>
         <ul>
             <li>Displaying API Objects Dynamically</li>
             <li>IMBD Links</li>
         </ul>
-    <li>@brianshort</li>
+    <li>
+        <a href="https://github.com/brianrshort">@brianshort</a>
+    </li>
         <ul>
             <li>Ratings & Reviews (input, display, localstorage)</li>
             <li>Random Topic Function</li>
         </ul>
-    <li>@jsegnegon</li>
+    <li>
+        <a href="https://github.com/jsegnegon">@jsegnegon</a>
+    </li>
         <ul>
             <li>Suggestion Box</li>
         </ul>
-    <li>@sambishop3015</li>
+    <li>
+        <a href="https://github.com/sambishop3015">@sambishop3015</a>
+    </li>
         <ul>
             <li>Get Functions for APIs</li>
             <li>README</li>
@@ -93,19 +103,33 @@ thought when you watched Tiger King the first time.</p>
 
 <h2>Lessons Learned</h2>
 <ul>
-    <li>@stricklin927:</li>
-    <li>@bettycode:</li>
+    <li>
+        <a href="https://github.com/stricklin927">@stricklin927</a>
+    </li>
+        <ul>
+            <li>Branching and merging with a workflow</li>
+            <li>Researching and implementing a new front-end framework</li>
+        </ul>
+    <li>
+        <a href="https://github.com/bettycode">@bettycode</a>
+    </li>
         <ul>
             <li>Working with other developers</li>
             <li>Understanding the workflow</li>
         </ul>
-    <li>@brianshort:</li>
+    <li>
+        <a href="https://github.com/brianrshort">@brianshort</a>
+    </li>
         <ul>
             <li>Increased fluency with API objects</li>
             <li>Git collaboration methods</li>
         </ul>
-    <li>@jsegnegon:</li>
-    <li>@sambishop3015:</li>
+    <li>
+        <a href="https://github.com/jsegnegon">@jsegnegon</a>
+    </li>
+    <li>
+        <a href="https://github.com/sambishop3015">@sambishop3015</a>
+    </li>
         <ul>
             <li>API types; HTML, OAuth, Key</li>
             <li>Readme design tricks including gifs</li>
