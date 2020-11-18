@@ -13,7 +13,7 @@
 </p>
 
 <h2 align="center">
-    <a href="https://brianrshort.github.io/trilogy-project-one/">=> Live Demo <=</a>
+    <a href="https://brianrshort.github.io/Media-Recommender-App">=> Live Demo <=</a>
 </h2>
 <br>
 
